@@ -1,5 +1,5 @@
 <template>
-  <section class='quatre-cent-quatre'>
+  <section class='not-found'>
     <h1>404, page doesn't exist.</h1>
     <ul class="quatre-cent-quatre__content">
       <li> <router-link to="/">Page d'accueil</router-link> </li>
@@ -12,7 +12,7 @@
 <script>
 
 export default {
-  name: '404',
+  name: 'NotFound',
 
   components: {
   },
@@ -23,7 +23,7 @@ export default {
 <style scoped lang="scss">
 @import "../../assets/stylesheets/variables";
 
-.quatre-cent-quatre{
+.not-found{
   display: flex;
   flex-direction: column;
   justify-content: center;
