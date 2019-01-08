@@ -1,13 +1,17 @@
 <template>
-  <div class="form">
+  <section class="formProduct">
+    <!-- TODO : Créer un bandeau shared pour tous les titres de page -->
     <h1>Ajouter une annonce</h1>
-    <form>
-      <div class>
-        Titre<br/>
+    <!-- END TODO Créer un bandeau shared pour tous les titre de page -->
+      
+    <div class="form">
+      <div>
+        <label class="label">Titre du livre</label>
         <input type="text" name="title" id="title">
       </div>
-      <div class="sort">
-        Genre(s)<br/>
+
+      <div>
+        <label class="label">Genre(s)</label>
         <input type="checkbox" name="thriller" id="thriller">
         <label for="thriller">Thriller</label>
         <input type="checkbox" name="policier" id="policier">
@@ -17,40 +21,53 @@
         <input type="checkbox" name="theatre" id="theatre">
         <label for="theatre">Theatre</label>
       </div>
-      <div class>
-        Resume du livre<br/>
-        <textarea name="resume" id="resume" cols="30" rows="10"></textarea>
-      </div>
+
       <div>
-        Prix<br/>
+        <label class="label">Résume du livre</label>
+        <textarea name="resume" id="resume"></textarea>
+      </div>
+
+      <div>
+        <label class="label">Prix en €</label>
         <input type="number" name="price" id="price" step="0.01">
-        €
       </div>
+
       <div>
-        Photo<br/>
+        <label class="label">Photo du livre</label>
         <input type="file" name="photo" id="photo" accept="image/bmp,image/gif,image/jpeg,image/png,image/x-ms-bmp">
       </div>
+      
       <div>
-        <button-submit title="Envoyer"/>
+        <input type="submit" value="Envoyer" v-on:click='addItem()'>
       </div>
-    </form>
-  </div>
+    </div>
+
+  </section>
 </template>
 
 <script>
-
-import ButtonSubmit from '../../../shared/ButtonSubmit';
 
 export default {
   name: 'Form',
 
   components: {
-    ButtonSubmit
   },
+
+  mounted() {
+	},
+
+	methods:{ 
+    addItem(){
+      console.log('addItem work')
+    }
+	}
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  @import "../../../assets/stylesheets/form";
 
+  .formProduct{
+
+  }
 </style>
