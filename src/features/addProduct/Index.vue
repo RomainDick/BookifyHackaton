@@ -1,21 +1,19 @@
 <template>
   <div class="addProduct">    
-    <Button
-      :title='"Enregistrer"'
-      :link='"http://google.com"'
-    ></Button>
-
+    <Form/>
   </div>
 </template>
 
 <script>
-import Button from '../../shared/Button';
+//import Button from '../../shared/Button';
+import Form from './components/Form.vue';
 
 export default {
   name: 'addProduct',
 
   components: {
-    Button
+    Form
+//Button
   },
 
 }
