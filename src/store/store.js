@@ -1,16 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue 						from 'vue';
+import Vuex           from 'vuex';
 
-Vue.use(Vuex)
+import * as fromStore from './index.js';
 
-export default new Vuex.Store({
-  state: {
+Vue.use(Vuex);
 
-  },
-  mutations: {
-
-  },
-  actions: {
-
-  }
-})
+export const store = new Vuex.Store({
+  state     : fromStore.states,
+	actions   : fromStore.actions,
+  mutations : fromStore.mutations,
+	getters   : fromStore.getters
+});

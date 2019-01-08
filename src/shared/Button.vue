@@ -19,10 +19,12 @@ export default {
 </script>
 
 <style lang="scss">
+
 .button{
   background-color: #000;
   color:#FFF;
   width: auto;
   padding:5px 20px;
 }
+
 </style>
