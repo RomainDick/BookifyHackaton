@@ -38,7 +38,7 @@ export default new Router({
     },
     { 
       path: '/404', 
-      component: loadView('404')
+      component: loadView('NotFound')
     },  
     { 
       path: '*', 
