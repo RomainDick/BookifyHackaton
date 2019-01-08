@@ -1,61 +1,56 @@
 <template>
-  <div class="formProduct">
+  <div class="form">
     <h1>Ajouter une annonce</h1>
     <form>
-      
+      <div class>
+        Titre<br/>
+        <input type="text" name="title" id="title">
+      </div>
+      <div class="sort">
+        Genre(s)<br/>
+        <input type="checkbox" name="thriller" id="thriller">
+        <label for="thriller">Thriller</label>
+        <input type="checkbox" name="policier" id="policier">
+        <label for="policier">Policier</label>
+        <input type="checkbox" name="romance" id="romance">
+        <label for="romance">Romance</label>
+        <input type="checkbox" name="theatre" id="theatre">
+        <label for="theatre">Theatre</label>
+      </div>
+      <div class>
+        Resume du livre<br/>
+        <textarea name="resume" id="resume" cols="30" rows="10"></textarea>
+      </div>
+      <div>
+        Prix<br/>
+        <input type="number" name="price" id="price" step="0.01">
+        €
+      </div>
+      <div>
+        Photo<br/>
+        <input type="file" name="photo" id="photo" accept="image/bmp,image/gif,image/jpeg,image/png,image/x-ms-bmp">
+      </div>
+      <div>
+        <button-submit title="Envoyer"/>
+      </div>
     </form>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
   </div>
 </template>
 
 <script>
+
+import ButtonSubmit from '../../../shared/ButtonSubmit';
+
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'Form',
+
+  components: {
+    ButtonSubmit
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>
