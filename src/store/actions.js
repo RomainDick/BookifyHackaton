@@ -1,11 +1,10 @@
 import Vue 						from 'vue';
 import * as fromTypes from './types.js';
 
-const environements = Vue.config.environments;
-
 export const actions = {
 
 	[fromTypes.LOGIN_USER]({commit}, payload){
+		
 		//for test
 		commit(
 			fromTypes.LOGIN_USER_BOLEAN,
@@ -15,7 +14,7 @@ export const actions = {
 
 		Vue.http
 		.post(
-			environements.baseURL+'login',
+			Vue.config.environments.baseURL+'login',
 			payload
 		)
 		.then(response => {
