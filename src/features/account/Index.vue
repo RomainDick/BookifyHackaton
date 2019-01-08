@@ -1,6 +1,6 @@
 <template>
   <div class="account">
-    <img alt="Vue logo" src="../../assets/logo.png">
+    <img alt="Vue logo" src="@/assets/image/logo.svg">
 
     <Button :title='"ae"'
      :link='"http://google.com"'></Button>

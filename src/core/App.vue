@@ -24,6 +24,12 @@ export default {
     HeaderApp,
     FooterApp
   },
+
+  mounted() {
+	},
+
+	methods:{ 
+	}
 }
 </script>
 
