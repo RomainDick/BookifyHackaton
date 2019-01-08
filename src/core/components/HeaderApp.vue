@@ -9,6 +9,9 @@
           <router-link class='HeaderApp__link' to="/">Home</router-link>
         </li>
         <li>
+          <router-link class='HeaderApp__link' to="/items">Mes annonces</router-link>
+        </li>
+        <li>
           <router-link class='HeaderApp__link' to="/addProduct">addProduct</router-link>
         </li>
         <li>
