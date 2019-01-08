@@ -35,21 +35,15 @@ export default {
 
 
 <style lang="scss">
-
 @import "../assets/stylesheets/variables";
 @import "../assets/stylesheets/reset";
 
 #app {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  color: #2c3e50;
+  background-color: $wild-sand;
   display: flex;
   flex-direction: column;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   justify-content: space-between;
   min-height: 100vh;
-  text-align: center;
-  background-color: $wild-sand;
 }
 
 .main{
@@ -58,5 +52,4 @@ export default {
   max-width: $main-witdh;
   padding:$marge;
 }
-
 </style>
