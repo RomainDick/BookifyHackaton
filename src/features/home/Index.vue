@@ -23,11 +23,5 @@ export default {
     Button
   },
   
-	computed: {
-		getSearchType() {
-			return this.$store.getters.getSearchType;
-		},
-  },
-  
 }
 </script>

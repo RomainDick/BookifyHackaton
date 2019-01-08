@@ -1,11 +1,20 @@
 <template>
   <header class='HeaderApp'>
-    <img class='HeaderApp__logo' src="@/assets/image/logo.svg" alt="">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <div class='HeaderApp__content'>
 
-    {{getTest}}
+      <img class='HeaderApp__logo' src="@/assets/image/logo.svg" alt="">
 
+      <ul class='HeaderApp__list'>
+        <li>
+          <router-link class='HeaderApp__link' to="/">Home</router-link>
+        </li>
+        <li>
+          <router-link class='HeaderApp__link' to="/about">About</router-link>
+        </li>
+        <li>{{getTest}}</li>
+      </ul>
+
+    </div>
   </header>
 </template>
 
@@ -24,7 +33,7 @@ export default {
 	mounted() {
     setTimeout(() => {
       this.logUser()
-    }, 1000);
+    }, 2000);
 	},
 
 	methods:{
@@ -40,11 +49,40 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "../../assets/stylesheets/_variables";
+
 .HeaderApp{
-  display: flex;
+  padding: 5px 0;
+  background-color: $moss-green;
+
+  &__content{
+    display: flex;
+    max-width: $main-witdh;
+    margin:0 auto;
+    padding:0 $marge;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &__logo{
     width: 100px;
+    height: 40px;
   }
+
+  &__list{
+    display: flex;
+    li{
+      padding: 0 10px;
+    }
+  }
+
+  &__link{
+    color:$black;
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
 }
 </style>
