@@ -52,35 +52,39 @@ export default {
 @import "../../assets/stylesheets/_variables";
 
 .HeaderApp{
-  padding: 5px 0;
   background-color: $moss-green;
+  height: $height-nav;
 
   &__content{
     display: flex;
     max-width: $main-witdh;
     margin:0 auto;
-    padding:0 $marge;
+    padding:3px $marge;
     align-items: center;
     justify-content: space-between;
   }
 
   &__logo{
     width: 100px;
-    height: 40px;
+    height: 45px;
   }
 
   &__list{
     display: flex;
-    li{
-      padding: 0 10px;
-    }
   }
 
   &__link{
+    border-bottom: 2px solid transparent;
     color:$black;
+    font-size: 15px;
+    font-weight: 600;
     text-decoration: none;
+    transition: all 150ms ease-out;
+    padding: 2px 3px;
+    margin:3px 7px;
+
     &:hover{
-      text-decoration: underline;
+      border-bottom: 2px solid $summer-green;
     }
   }
 }

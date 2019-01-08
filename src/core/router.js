@@ -35,6 +35,14 @@ export default new Router({
       path: '/items',
       name: 'items',
       component: loadView('items')
-    }
+    },
+    { 
+      path: '/404', 
+      component: loadView('404')
+    },  
+    { 
+      path: '*', 
+      redirect: '/404' 
+    },  
   ]
 })
