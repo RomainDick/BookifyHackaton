@@ -4,9 +4,8 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 //Import feature for route 
-import Home from '../features/home/Index.vue'
-import About from '../features/about/Index.vue'
-
+import Home from '@/features/home/Index.vue'
+import About from '@/features/about/Index.vue'
 
 export default new Router({
   mode: 'history',
