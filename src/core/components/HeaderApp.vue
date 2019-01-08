@@ -9,15 +9,11 @@
           <router-link class='HeaderApp__link' to="/">Home</router-link>
         </li>
         <li>
-          <router-link class='HeaderApp__link' to="/about">About</router-link>
-        </li>
-        <li>
           <router-link class='HeaderApp__link' to="/addProduct">addProduct</router-link>
         </li>
         <li>
           <router-link class='HeaderApp__link' to="/account">account</router-link>
         </li>
-        <!-- <li>{{getTest}}</li> -->
       </ul>
 
     </div>

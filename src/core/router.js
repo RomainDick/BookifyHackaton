@@ -5,7 +5,6 @@ Vue.use(Router)
 
 //Import feature for route 
 import Home from '@/features/home/Index.vue'
-import About from '@/features/about/Index.vue'
 import Account from '@/features/account/Account.vue'
 import AddProduct from '@/features/addProduct/Index.vue'
 
@@ -22,11 +21,6 @@ export default new Router({
       path: '/account',
       name: 'account',
       component: Account
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: About
     },
     {
       path: '/addProduct',
