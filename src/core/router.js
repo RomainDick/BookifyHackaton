@@ -6,6 +6,7 @@ Vue.use(Router)
 //Import feature for route 
 import Home from '@/features/home/Index.vue'
 import About from '@/features/about/Index.vue'
+import Account from '@/features/account/Account.vue'
 
 export default new Router({
   mode: 'history',
@@ -15,6 +16,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: Account
     },
     {
       path: '/about',
