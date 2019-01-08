@@ -8,6 +8,7 @@ import Home from '@/features/home/Index.vue'
 import About from '@/features/about/Index.vue'
 import Account from '@/features/account/Index.vue'
 import AddProduct from '@/features/addProduct/Index.vue'
+import Items from '@/features/items/Index.vue'
 
 export default new Router({
   mode: 'history',
@@ -32,6 +33,11 @@ export default new Router({
       path: '/addProduct',
       name: 'addProduct',
       component: AddProduct
+    },
+    {
+      path: '/items',
+      name: 'items',
+      component: Items
     }
   ]
 })
