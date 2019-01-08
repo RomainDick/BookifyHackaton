@@ -5,9 +5,10 @@ Vue.use(Router)
 
 //Import feature for route 
 import Home from '@/features/home/Index.vue'
-import Account from '@/features/account/Account.vue'
 import Login from '@/features/login/Index.vue'
+import Account from '@/features/account/Index.vue'
 import AddProduct from '@/features/addProduct/Index.vue'
+import Items from '@/features/items/Index.vue'
 
 export default new Router({
   mode: 'history',
@@ -32,6 +33,11 @@ export default new Router({
       path: '/addProduct',
       name: 'addProduct',
       component: AddProduct
+    },
+    {
+      path: '/items',
+      name: 'items',
+      component: Items
     }
   ]
 })

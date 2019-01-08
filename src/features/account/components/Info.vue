@@ -15,7 +15,7 @@
 
 <script>
   export default {
-    name: "data",
+    name: "info",
     props: {
       msg: String
     }

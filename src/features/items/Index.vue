@@ -1,19 +1,25 @@
 <template>
-  <ul id="example"><!--
-  <li v-for="(item, index) in items">
-    {{ parentMessage }} - {{ index }} - {{ item.message }}
-  </li>-->
-</ul>
+  <ul id="item_list">
+      <ItemBook
+        :name='"test"'
+        :description='"test"'
+        :image='"test"'
+        :price='12'
+        :username='"test"'
+        :phone_number='"0000000000"'
+        :email='"test@test.fr"'
+      ></ItemBook>
+  </ul>
 </template>
 
 <script>
-import Items from '../../shared/Item';
+import ItemBook from '@/shared/ItemBook';
 
 export default {
-  name: 'item',
+  name: 'Items',
 
   components: {
-    Items
+    ItemBook
   },
 
 }
