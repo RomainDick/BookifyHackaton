@@ -1,7 +1,10 @@
 export const getters = {
-
-	getTest: state => {
-		return state.test;
+	
+	getUserLogin: state => {
+		return state.user.login;
+	},
+	getUserInfos: state => {
+		return state.user.infos;
 	},
 	
 };

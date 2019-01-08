@@ -2,21 +2,26 @@
   <header class='HeaderApp'>
     <div class='HeaderApp__content'>
 
-      <img class='HeaderApp__logo' src="@/assets/image/logo.svg" alt="">
+      <router-link to="/">
+        <img class='HeaderApp__logo' src="@/assets/image/logo.svg" alt="">
+      </router-link>
 
       <ul class='HeaderApp__list'>
-        <li>
-          <router-link class='HeaderApp__link' to="/">Home</router-link>
+
+        <li v-if='!getUserLogin'>
+          <router-link class='HeaderApp__link' to="/login">Login</router-link>
         </li>
-        <li>
+
+        <li v-if='getUserLogin'>
           <router-link class='HeaderApp__link' to="/items">Mes annonces</router-link>
         </li>
-        <li>
+        <li v-if='getUserLogin'>
           <router-link class='HeaderApp__link' to="/addProduct">addProduct</router-link>
         </li>
-        <li>
+        <li v-if='getUserLogin'>
           <router-link class='HeaderApp__link' to="/account">account</router-link>
         </li>
+
       </ul>
 
     </div>
@@ -24,35 +29,25 @@
 </template>
 
 <script>
-import * as fromTypes from '@/store/types.js';
 
 export default {
   name: 'HeaderApp',
 
 	computed: {
-		getTest() {
-			return this.$store.getters.getTest;
+		getUserLogin() {
+			return this.$store.getters.getUserLogin;
 		},
 	},
 
 	mounted() {
-    setTimeout(() => {
-      this.logUser()
-    }, 2000);
 	},
 
 	methods:{
-    logUser(){
-      this.$store.dispatch(
-        fromTypes.UPDATE_TEST,
-        true
-      );
-    },  
 	}
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped lang="scss">
 @import "../../assets/stylesheets/_variables";
 
@@ -88,6 +83,5 @@ export default {
       text-decoration: underline;
     }
   }
-
 }
 </style>

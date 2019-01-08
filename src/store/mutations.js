@@ -2,10 +2,17 @@ import * as fromTypes from './types.js';
 
 export const mutations = {
 
-	[fromTypes.UPDATE_TEST](state, payload) {
-		state.test = {
-			...state.test,
-			login: payload
+	[fromTypes.LOGIN_USER](state, payload) {
+		state.user = {
+			...state.user,
+			infos : payload,
+		};
+	},
+
+	[fromTypes.LOGIN_USER_BOLEAN](state, payload) {
+		state.user = {
+			...state.user,
+			login : payload,
 		};
 	},
 	

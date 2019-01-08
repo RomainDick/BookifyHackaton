@@ -1,13 +1,10 @@
 export const states = {
-
-  test : {
-    login : false,
-  },
   
   user : {
-
+    login : false,
+    infos : {
+      token : null
+    }
   },
-
-
 
 };
