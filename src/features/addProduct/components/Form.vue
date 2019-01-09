@@ -1,7 +1,7 @@
 <template>
   <section class="formProduct">
     <!-- TODO : Créer un bandeau shared pour tous les titres de page -->
-    <h1>Ajouter une annonce</h1>
+    <banner title="Ajouter une annonce" />
     <!-- END TODO Créer un bandeau shared pour tous les titre de page -->
       
     <div class="form">
@@ -48,16 +48,17 @@
         <input type="submit" value="Envoyer" v-on:click='checkForm()'>
       </div>
     </div>
-
   </section>
 </template>
 
 <script>
+import Banner from '../../../shared/Banner';
 
 export default {
   name: 'Form',
 
   components: {
+    Banner
   },
 
 	data(){
