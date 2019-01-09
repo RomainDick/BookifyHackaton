@@ -16,5 +16,8 @@ export const getters = {
 	getUserInfos: state => {
 		return state.user.infos;
 	},
+	getUserData: state => {
+		return state.user.data;
+	},
 	
 };

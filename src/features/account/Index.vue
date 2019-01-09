@@ -1,8 +1,5 @@
 <template>
   <div class="account">
-    <img alt="Vue logo" src="@/assets/image/logo.svg">
-
-
     <info/>
   </div>
 </template>

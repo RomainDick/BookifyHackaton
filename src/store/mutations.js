@@ -28,6 +28,13 @@ export const mutations = {
 			login : payload,
 		};
 	},
+
+	[fromTypes.USER_INFO](state, payload) {
+		state.user = {
+			...state.user,
+			data : payload,
+		};
+	},
 	
 	// [fromTypes.UPDATE_LOADER](state, payload) {
 	// 	state.loader = payload;

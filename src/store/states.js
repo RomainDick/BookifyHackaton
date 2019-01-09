@@ -5,6 +5,14 @@ export const states = {
     infos : {
       token : null,
       id : null,
+    },
+    data : {
+      firstName:null,
+      lastName:null,
+      gender:null,
+      phone:null,
+      birthday:null,
+      email:null,
     }
   },
 
