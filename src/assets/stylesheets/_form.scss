@@ -30,7 +30,9 @@
   select {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    background-color: transparent;
     border: none;
+    border-radius: 0;
     border-bottom: 1px solid $summer-green;
     box-sizing: border-box;
     display: block;

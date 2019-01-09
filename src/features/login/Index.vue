@@ -1,44 +1,34 @@
 <template>
   <section class='login'>
+    
+    <div v-if='formDisplay == "login"'>
+      <Login></Login>
+      <button v-on:click='changeFormDisplay("register")'>Je n'ai pas de compte</button>
+    </div>
 
-    <div class="form">
-      <label class="label">Email</label>
-      <input 
-        type="text" 
-        placeholder='login'
-        v-model='user.username'
-      >
-      <label class="label">Password</label>
-      <input 
-        type="text" 
-        placeholder='password'
-        v-model='user.password'
-      >
-      <input 
-        type="submit"
-        value='login'
-        v-on:click='loginUser()'
-      >
+    <div v-else>
+      <Register></Register>
+      <button v-on:click='changeFormDisplay("login")'>J'ai déja un compte</button>
     </div>
     
   </section>
 </template>
 
 <script>
-import * as fromTypes from '@/store/types.js';
+import Login from './components/Login';
+import Register from './components/Register';
 
 export default {
   name: 'login',
 
   components: {
+    Login,
+    Register
   },
 
 	data(){
     return {
-      user : {
-        username: 'maxime@test.com',
-        password: 'azerty'
-      }
+      formDisplay : 'register'
     };
   },
   
@@ -47,13 +37,9 @@ export default {
 	},
 
   methods:{
-    loginUser(){
-      this.$store.dispatch(
-        fromTypes.LOGIN_USER,
-        this.user
-      );
-    },
-      
+    changeFormDisplay(string){
+      this.formDisplay = string;
+    }
 	}
 
 }
