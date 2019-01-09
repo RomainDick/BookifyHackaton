@@ -16,12 +16,21 @@
     </div>
 
     <div class="search__result">
-      <div class="search__list" v-if='!getSearchLoading'>
-        <h1>Il y a {{getSearch['hydra:totalItems']}} resultat(s) </h1>
+      <h1>
+        Il y a 
+        <span v-if="getSearch['hydra:totalItems']">{{getSearch['hydra:totalItems']}}</span>
+        <span v-else>0</span> 
+        resultat(s) 
+      </h1>
 
-      </div>
-      <div v-else>
-        <Loader></Loader>  
+      <div class="search__list" v-if='!getSearchLoading'>
+
+        <ListItems
+          :loading = 'getSearchLoading'
+          :loaded  = 'getSearchLoaded'
+          :items   = "getSearch['hydra:member']"
+        ></ListItems>
+
       </div>
     </div>
 
@@ -30,15 +39,15 @@
 
 <script>
 import * as fromTypes from '@/store/types.js';
-import Loader from '@/shared/Loader';
 import Banner from '@/shared/Banner';
+import ListItems from '@/shared/ListItems';
 
 export default {
   name: 'search',
 
   components: {
-    Loader,
-    Banner
+    Banner,
+    ListItems
   },
 
 	data(){
@@ -91,15 +100,16 @@ export default {
 
   &__input{
     width: 100%;
+
     input{
-      width: 100%;
-      height: 50px;
-      border:0;
-      border-bottom: 1px solid $summer-green;
-      font-size: 20px;
-      background-color: transparent;
       appearance: none;
+      background-color: transparent;
+      border-bottom: 1px solid $summer-green;
+      border:0;
+      font-size: 20px;
+      height: 50px;
       outline: none;
+      width: 100%;
     }
   }
 
