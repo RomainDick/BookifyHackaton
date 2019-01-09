@@ -8,4 +8,10 @@ export const states = {
     }
   },
 
+  search : {
+    results : {},
+    loading : false,
+    loaded : false
+  }
+
 };

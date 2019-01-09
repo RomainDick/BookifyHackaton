@@ -1,5 +1,6 @@
 <template>
   <section class='search'>
+
     <div class="search__input">
       <input 
         type="text" 
@@ -8,16 +9,30 @@
         v-on:keyup='startSearch()'
       >
     </div>
-    <div class="search__result">
 
+    <div class="search__result">
+      <div class="search__list" v-if='!getSearchLoading'>
+        <h1>Il y a {{getSearch['hydra:totalItems']}} resultat(s) </h1>
+
+      </div>
+      <div v-else>
+        <Loader></Loader>  
+      </div>
     </div>
+
   </section>
 </template>
 
 <script>
+import * as fromTypes from '@/store/types.js';
+import Loader from '@/shared/Loader';
 
 export default {
   name: 'search',
+
+  components: {
+    Loader
+  },
 
 	data(){
     return {
@@ -26,16 +41,34 @@ export default {
   },
 
 	computed: {
-
+		getUserInfos() {
+			return this.$store.getters.getUserInfos;
+    },
+    getSearch() {
+      return this.$store.getters.getSearch;
+    },
+    getSearchLoading() {
+      return this.$store.getters.getSearchLoading;
+    },
+    getSearchLoaded() {
+      return this.$store.getters.getSearchLoaded;
+    },
 	},
+
 
 	mounted() {
 	},
 
 	methods:{
     startSearch(){
-      if(this.keyword > 3){
-        console.log(this.keyword);
+      if(this.keyword.length > 3){
+        this.$store.dispatch(
+          fromTypes.SEARCH,
+          {
+            keyword : this.keyword,
+            token : this.getUserInfos.token
+          }
+        );
       }
     }
 	}
