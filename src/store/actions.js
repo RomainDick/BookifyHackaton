@@ -21,6 +21,28 @@ export const actions = {
 		});
 	},
 
+	[fromTypes.CREATE_MEDIA]({commit,dispatch}, payload){
+		Vue.http
+		.post(
+			Vue.config.environments.baseURL+'media',
+			payload.media
+		)
+		.then(response => {
+			console.log(response)
+			payload.user.media = payload.user.media + response.body.id
+			commit(
+				fromTypes.CREATE_MEDIA,
+				response.body
+			);
+			dispatch(
+				fromTypes.CREATE_USER,
+				payload.user
+			)
+		}, response => {
+			console.log(response)
+		});
+	},
+
 
 	[fromTypes.SEARCH]({commit}, payload){
 		commit(

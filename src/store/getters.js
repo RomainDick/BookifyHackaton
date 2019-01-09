@@ -29,5 +29,8 @@ export const getters = {
 	getUserData: state => {
 		return state.user.data;
 	},
+	getMedia: state => {
+		return state.media;
+	},
 	
 };
