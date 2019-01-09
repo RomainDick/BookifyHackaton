@@ -13,7 +13,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
-import Button from '@/shared/Button';
+import Button from '../../shared/Button';
 
 export default {
   name: 'home',
@@ -22,6 +22,6 @@ export default {
     HelloWorld,
     Button
   },
-  
+
 }
 </script>
