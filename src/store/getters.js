@@ -1,5 +1,15 @@
 export const getters = {
 	
+	getItems: state => {
+		return state.items.results;
+	},
+	getItemsLoading: state => {
+		return state.items.loading;
+	},
+	getItemsLoaded: state => {
+		return state.items.loaded;
+	},
+
 	getSearch: state => {
 		return state.search.results;
 	},

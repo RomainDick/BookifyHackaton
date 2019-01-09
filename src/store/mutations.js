@@ -15,6 +15,20 @@ export const mutations = {
 		state.search.loaded = payload;
 	},
 
+
+	[fromTypes.GET_ITEMS](state, payload) {
+		state.items = {
+			...state.items,
+			results : payload,
+		};
+	},
+	[fromTypes.GET_ITEMS_LOADING](state, payload) {
+		state.items.loading = payload;
+	},
+	[fromTypes.GET_ITEMS_LOADED](state, payload) {
+		state.items.loaded = payload;
+	},
+
 	
 	[fromTypes.LOGIN_USER](state, payload) {
 		state.user = {
