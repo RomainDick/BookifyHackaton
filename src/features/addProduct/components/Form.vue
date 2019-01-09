@@ -13,16 +13,16 @@
 
       <div>
         <label class="label">Genre(s)</label>
-        <input type="checkbox" name="thriller" id="thriller" v-model="thriller">
+        <input type="checkbox" value="thriller" id="thriller" v-model="genre">
         <label for="thriller">Thriller</label>
-        <input type="checkbox" name="policier" id="policier" v-model="policier">
+        <input type="checkbox" value="policier" id="policier" v-model="genre">
         <label for="policier">Policier</label>
-        <input type="checkbox" name="romance" id="romance" v-model="romance">
+        <input type="checkbox" value="romance" id="romance" v-model="genre">
         <label for="romance">Romance</label>
-        <input type="checkbox" name="theatre" id="theatre" v-model="theatre">
+        <input type="checkbox" value="theatre" id="theatre" v-model="genre">
         <label for="theatre">Theatre</label>
-        <input type="checkbox" name="autre" id="autre" v-model="autre">
-        <label for="theatre">Autre</label>
+        <input type="checkbox" value="autre" id="autre" v-model="genre">
+        <label for="autre">Autre</label>
         <label class="error" v-if="errors.genre"><br/><br/>{{ errors.genre }}</label>
 
       </div>
@@ -69,11 +69,7 @@ export default {
         price: null,
       },
       title: null,
-      thriller: null,
-      policier: null,
-      romance: null,
-      theatre: null,
-      autre: null,
+      genre: [],
       resume: null,
       price: null,
     };
@@ -87,7 +83,7 @@ export default {
       this.errors = [];
       if (!this.title)
         this.errors.title = "Veuillez donner un titre à votre annonce.";
-      if (!this.thriller && !this.policier && !this.romance && !this.theatre && !this.autre)
+      if (!this.genre.length)
         this.errors.genre = "Veuillez selectionner au moins 1 genre.";
       if (!this.resume)
         this.errors.resume = "Veuillez donner le resumé de votre livre";
