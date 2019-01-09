@@ -6,3 +6,5 @@ export const SEARCH_LOADED      = '[SEARCH_LOADED] CHANGE LOADED';
 
 export const LOGIN_USER         = '[LOGIN] login user';
 export const LOGIN_USER_BOLEAN  = '[LOGIN] login user bolean';
+
+export const USER_INFO = '[ACCOUNT] info user';

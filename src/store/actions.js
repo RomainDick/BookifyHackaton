@@ -74,4 +74,21 @@ export const actions = {
 		});
 	},
 
+	[fromTypes.USER_INFO]({commit}, payload){
+		Vue.http
+		.get(
+			Vue.config.environments.baseURL+'users/'+payload.id,
+			{headers:{'Authorization' : 'Bearer '+ payload.token}}
+		)
+		.then(response => {
+			commit(
+				fromTypes.USER_INFO,
+				response.body
+			);
+
+		}, response => {
+			console.log(response)
+		});
+	},
+
 };

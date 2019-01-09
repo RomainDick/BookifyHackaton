@@ -4,46 +4,66 @@
   <div class="card">
 
     <img class="avatar" :src="picture">
-    <img class="gender" src="@/assets/image/male.svg" >
+    <img class="gender" :src="this.getGender" >
     <div class="infos">
       <div class="name capitalize">
-        {{ name }}
-      </div>
-      <div class="birth">
-        <i class="fas fa-fw fa-birthday-cake"></i>{{ birth }}
+        {{ this.getUserData.firstName }}  {{ this.getUserData.lastName }}
       </div>
       <div class="email">
-        <i class="fas fa-fw fa-envelope"></i>{{ email }}
+        <i class="fas fa-fw fa-envelope"></i>{{ this.getUserData.email }}
       </div>
       <div class="phone">
-        <i class="fas fa-fw fa-phone"></i>{{ phone }}
+        <i class="fas fa-fw fa-phone"></i>{{ this.getUserData.phone }}
       </div>
     </div>
-
   </div>
-
-
-
 
 </main>
 </template>
 
 <script>
+import * as fromTypes from '@/store/types.js';
+import male from "@/assets/image/male.svg";
+import female from "@/assets/image/female.svg";
+
  export default {
     name: "info",
     props: {
       msg: String
     },
-    data: function () {
-  return {
-    back: 'back',
-    picture: 'https://image.flaticon.com/icons/svg/149/149992.svg',
-    name: 'name',
-    birth: 'birth',
-    email: 'mail',
-    phone: 'phone'
+    data() {
+      return {
+        picture: 'https://image.flaticon.com/icons/svg/149/149992.svg',
+        genderMale:male,
+        genderFemale:female,
+      }
+  },
+	computed: {
+		getUserInfos() {
+			return this.$store.getters.getUserInfos;
+    },
+    getUserData() {
+			return this.$store.getters.getUserData;
+    },
+    getGender(){
+      if(this.getUserData.gender == 'M'){
+        return this.genderMale
+      }
+      else{
+         return this.genderFemale
+      }
+    }
+  },
+  
+  mounted(){
+      this.$store.dispatch(
+        fromTypes.USER_INFO,
+        {
+          id : this.getUserInfos.id,
+          token : this.getUserInfos.token
+        }
+      );
   }
-}
  }
 
 </script>
