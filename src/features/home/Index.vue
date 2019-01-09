@@ -1,26 +1,22 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="@/assets/image/logo.svg">
     
-    <Button
-      :title='"ae"'
-      :link='"http://google.com"'
-    ></Button>
-
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Banner
+      :title='"Bookify, Achat/Vente de livres d&apos;occasion"'
+      :image='"home"'
+    ></Banner>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import Button from '../../shared/Button';
+import Banner from '@/shared/Banner';
 
 export default {
   name: 'home',
 
   components: {
-    HelloWorld,
-    Button
+    Banner
   },
 
 }

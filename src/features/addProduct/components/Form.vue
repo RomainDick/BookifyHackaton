@@ -1,8 +1,5 @@
 <template>
   <section class="formProduct">
-    <!-- TODO : Créer un bandeau shared pour tous les titres de page -->
-    <banner title="Ajouter une annonce" />
-    <!-- END TODO Créer un bandeau shared pour tous les titre de page -->
       
     <div class="form">
       <div>
@@ -52,13 +49,11 @@
 </template>
 
 <script>
-import Banner from '../../../shared/Banner';
 
 export default {
   name: 'Form',
 
   components: {
-    Banner
   },
 
 	data(){

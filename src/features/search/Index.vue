@@ -1,5 +1,10 @@
 <template>
   <section class='search'>
+    
+    <Banner
+      :title='"Rechercher un livre"'
+      :image='"search"'
+    ></Banner>
 
     <div class="search__input">
       <input 
@@ -26,17 +31,19 @@
 <script>
 import * as fromTypes from '@/store/types.js';
 import Loader from '@/shared/Loader';
+import Banner from '@/shared/Banner';
 
 export default {
   name: 'search',
 
   components: {
-    Loader
+    Loader,
+    Banner
   },
 
 	data(){
     return {
-      keyword : ''
+      keyword : '',
     };
   },
 

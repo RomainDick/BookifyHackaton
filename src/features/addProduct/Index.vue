@@ -1,18 +1,25 @@
 <template>
-  <div class="addProduct">    
+  <section class="addProduct">    
+
+    <Banner 
+      :title='"Ajouter une annonce"'
+      :image='"addProduct"' 
+    ></Banner>
+
     <Form/>
-  </div>
+  </section>
 </template>
 
 <script>
-//import Button from '../../shared/Button';
 import Form from './components/Form.vue';
+import Banner from '@/shared/Banner';
 
 export default {
   name: 'addProduct',
 
   components: {
-    Form
+    Form,
+    Banner
     //Button
   },
 
