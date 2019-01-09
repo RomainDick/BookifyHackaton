@@ -49,6 +49,10 @@ export const mutations = {
 			data : payload,
 		};
 	},
+
+	[fromTypes.CREATE_MEDIA](state, payload) {
+		state.media = payload
+	},
 	
 	// [fromTypes.UPDATE_LOADER](state, payload) {
 	// 	state.loader = payload;

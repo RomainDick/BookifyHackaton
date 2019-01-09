@@ -9,6 +9,7 @@ export const SEARCH_LOADING     = '[SEARCH_LOADING] CHANGE LOADING';
 export const SEARCH_LOADED      = '[SEARCH_LOADED] CHANGE LOADED';
 
 export const CREATE_USER        = '[LOGIN] Create user';
+export const CREATE_MEDIA       = '[LOGIN] Create media';
 
 export const LOGIN_USER         = '[LOGIN] login user';
 export const LOGIN_USER_BOLEAN  = '[LOGIN] login user bolean';

@@ -38,6 +38,8 @@
       <label class="label">Avatar</label>
       <input 
         type="file"
+        ref="file"
+        v-on:change="createFile()"
       >
 
       <label class="label">Password</label>
@@ -49,7 +51,7 @@
       <input 
         type="submit"
         value='login'
-        v-on:click='createUser()'
+        v-on:click='createMedia()'
       >
     </div>
     
@@ -65,32 +67,49 @@ export default {
 	data(){
     return {
       formDisplay : 'register',
+      media: {
+        data : '',
+        name: '',
+      },
       user:{
         email : '',
         lastName : '',
         firstName : '',
-        gender : 'F',
+        gender : 'M',
         phone : '',
         plainPassword : '',
+        media : "/media/"
       }
     };
   },
   
   computed: {
-
+		getMedia() {
+			return this.$store.getters.getMedia;
+    },
 	},
 
   methods:{
-    createUser(){
-      console.log(this.user)
-
+    createMedia(){
       this.$store.dispatch(
-        fromTypes.CREATE_USER,
-        this.user
+        fromTypes.CREATE_MEDIA,
+        {
+          media : this.media,
+          user : this.user,
+        }
       );
-    }
-	}
+    },
 
+    createFile(){
+      let file = this.$refs.file.files[0]
+      this.media.name = file.name
+      let reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onloadend = () => {
+        this.media.data = reader.result
+      }
+    }
+  }
 }
 </script>
 

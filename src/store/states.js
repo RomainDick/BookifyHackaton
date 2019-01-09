@@ -7,15 +7,19 @@ export const states = {
       id : null,
     },
     data : {
-      firstName:null,
-      lastName:null,
-      gender:null,
-      phone:null,
-      birthday:null,
-      email:null,
+      firstName : null,
+      lastName : null,
+      gender : null,
+      phone : null,
+      birthday : null,
+      email : null,
     }
   },
 
+  media : {
+    id : null
+  },
+  
   search : {
     results : {},
     loading : false,
