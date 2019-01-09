@@ -1,6 +1,10 @@
 <template>
   <section class="listItem">
-    ListItems
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
   </section>
 </template>
 

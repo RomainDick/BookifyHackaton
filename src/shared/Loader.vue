@@ -17,6 +17,7 @@ export default {
 .loader{
   text-align: center;
   padding:30px 0;
+  
   .lds-ring {
     display: inline-block;
     position: relative;
