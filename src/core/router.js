@@ -36,6 +36,11 @@ export default new Router({
       name: 'items',
       component: loadView('items')
     },
+    {
+      path: '/search',
+      name: 'search',
+      component: loadView('search')
+    },
     { 
       path: '/404', 
       component: loadView('NotFound')

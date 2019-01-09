@@ -6,10 +6,10 @@ export const actions = {
 	[fromTypes.LOGIN_USER]({commit}, payload){
 		
 		//for test
-		commit(
-			fromTypes.LOGIN_USER_BOLEAN,
-			true
-		);
+		// commit(
+		// 	fromTypes.LOGIN_USER_BOLEAN,
+		// 	true
+		// );
 		//end for test
 
 		Vue.http

@@ -21,6 +21,12 @@
         <li v-if='getUserLogin'>
           <router-link class='HeaderApp__link' to="/account">account</router-link>
         </li>
+        
+        <li>
+          <router-link class='HeaderApp__link' to="/search">
+            <img src="@/assets/image/search.svg" alt="">
+          </router-link>
+        </li>
 
       </ul>
 
@@ -85,6 +91,11 @@ export default {
 
     &:hover{
       border-bottom: 2px solid $summer-green;
+    }
+
+    img{
+      width: 14px;
+      transform: scale(1.3);
     }
   }
 }

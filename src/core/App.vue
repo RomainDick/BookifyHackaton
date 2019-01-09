@@ -51,5 +51,6 @@ export default {
   margin:0 auto;
   max-width: $main-witdh;
   padding:$marge;
+  width: 100%;
 }
 </style>

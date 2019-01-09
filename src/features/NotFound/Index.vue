@@ -1,7 +1,7 @@
 <template>
   <section class='not-found'>
     <h1>404, page doesn't exist.</h1>
-    <ul class="quatre-cent-quatre__content">
+    <ul class="not-found__content">
       <li> <router-link to="/">Page d'accueil</router-link> </li>
       <li> <router-link to="/">Liste produit</router-link> </li>
       <li> <router-link to="/account">Mon compte</router-link> </li>
