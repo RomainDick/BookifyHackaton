@@ -3,7 +3,8 @@ export const states = {
   user : {
     login : false,
     infos : {
-      token : null
+      token : null,
+      id : null,
     }
   },
 
