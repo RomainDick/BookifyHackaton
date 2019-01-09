@@ -48,6 +48,10 @@ export const actions = {
 				true
 			);
 		}, response => {
+			commit(
+				fromTypes.SEARCH_LOADING,
+				false
+			);
 			console.log(response)
 		});
 	},
@@ -92,6 +96,38 @@ export const actions = {
 
 		}, response => {
 			console.log(response)
+		});
+	},
+
+	[fromTypes.GET_ITEMS]({commit}){
+		commit(
+			fromTypes.GET_ITEMS_LOADING,
+			true
+		);
+
+		Vue.http
+		.get(
+			Vue.config.environments.baseURL+'items'
+		)
+		.then(response => {
+			commit(
+				fromTypes.GET_ITEMS,
+				response.body
+			);
+			commit(
+				fromTypes.GET_ITEMS_LOADED,
+				true
+			);
+			commit(
+				fromTypes.GET_ITEMS_LOADING,
+				false
+			);
+		}, response => {
+			console.log(response);
+			commit(
+				fromTypes.GET_ITEMS_LOADING,
+				false
+			);
 		});
 	},
 

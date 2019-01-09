@@ -20,6 +20,12 @@ export const states = {
     results : {},
     loading : false,
     loaded : false
+  },
+
+  items : {
+    results : {},
+    loading : false,
+    loaded : false
   }
 
 };
