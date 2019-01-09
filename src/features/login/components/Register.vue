@@ -98,6 +98,7 @@ export default {
           user : this.user,
         }
       );
+      this.media = "/media/"
     },
 
     createFile(){
