@@ -154,4 +154,38 @@ export const actions = {
 		});
 	},
 
+	[fromTypes.GET_MY_ITEMS]({commit}, payload){
+		commit(
+			fromTypes.GET_MY_ITEMS_LOADING,
+			true
+		);
+
+		Vue.http
+		.get(
+			Vue.config.environments.baseURL+'items?user.id='+payload,
+		)
+		.then(response => {
+			setTimeout(() => {
+				commit(
+					fromTypes.GET_MY_ITEMS,
+					response.body
+				);
+				commit(
+					fromTypes.GET_MY_ITEMS_LOADED,
+					true
+				);
+				commit(
+					fromTypes.GET_MY_ITEMS_LOADING,
+					false
+				);
+			}, 500);
+		}, response => {
+			console.log(response);
+			commit(
+				fromTypes.GET_MY_ITEMS_LOADING,
+				false
+			);
+		});
+	},
+
 };

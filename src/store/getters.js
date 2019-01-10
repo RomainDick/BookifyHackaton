@@ -10,6 +10,16 @@ export const getters = {
 		return state.items.loaded;
 	},
 
+	getMyItems: state => {
+		return state.items.results;
+	},
+	getMyItemsLoading: state => {
+		return state.items.loading;
+	},
+	getMyItemsLoaded: state => {
+		return state.items.loaded;
+	},
+
 	getSearch: state => {
 		return state.search.results;
 	},
