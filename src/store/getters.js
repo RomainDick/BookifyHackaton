@@ -10,6 +10,16 @@ export const getters = {
 		return state.items.loaded;
 	},
 
+	getCategories: state => {
+		return state.categories.results;
+	},
+	getCategoriesLoading: state => {
+		return state.categories.loading;
+	},
+	getCategoriesLoaded: state => {
+		return state.categories.loaded;
+	},
+
 	getSearch: state => {
 		return state.search.results;
 	},

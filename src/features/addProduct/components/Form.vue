@@ -7,7 +7,13 @@
         <input type="text" name="title" id="title" v-model="item.title">
         <label class="error" v-if="errors.title"><br/>{{ errors.title }}</label>
       </div>
-      
+      <div>
+        <label class="label">Genre(s)</label>
+        <select v-model="item.category">
+          <option v-for='(cat, index) in getCategories["hydra:member"]' :key="index" v-bind:value="cat.id">{{cat.name}}</option>
+        </select>
+        <label class="error" v-if="errors.category"><br/><br/>{{ errors.category }}</label>
+      </div>
   <!--    <div>
         <label class="label">Genre(s)</label>
         <input type="checkbox" value="thriller" id="thriller" v-model="item.genre">
@@ -20,7 +26,6 @@
         <label for="theatre">Theatre</label>
         <input type="checkbox" value="autre" id="autre" v-model="item.genre">
         <label for="autre">Autre</label>
-        <label class="error" v-if="errors.genre"><br/><br/>{{ errors.genre }}</label>
 
       </div> -->
 
@@ -61,18 +66,17 @@ export default {
     return {
       errors: {
         title: null,
-        genre: null,
+        category: null,
         content: null,
         price: null,
       },
       item: {
         title: null,
-      //  genre: [],
         content: null,
         price: 0,
         user : null,
         media : '/media/21',
-        category : '/categories/1'
+        category : null,
         
       }
     };
@@ -82,16 +86,23 @@ export default {
     getUserInfos() {
 			return this.$store.getters.getUserInfos;
     },
+    getCategories() {
+      return this.$store.getters.getCategories;
+    }
   },
 
   mounted() {
+    this.$store.dispatch(
+        fromTypes.GET_CATEGORIES
+      );
 	},
 
 	methods:{ 
       
     createProduct(){
-      console.log(this.getUserInfos)
       this.item.user = '/users/'+this.getUserInfos.id;
+      this.item.category = '/categories/'+ this.item.category;
+      console.log(this.item.category);
       this.$store.dispatch(
         fromTypes.CREATE_PRODUCT,
         {
@@ -106,8 +117,8 @@ export default {
       this.errors = [];
       if (!this.item.title)
         this.errors.title = "Veuillez donner un titre à votre annonce.";
-   //   if (!this.item.genre.length)
-     //   this.errors.genre = "Veuillez selectionner au moins 1 genre.";
+      if (!this.item.category)
+        this.errors.category = "Veuillez selectionner une categorie.";
       if (!this.item.content)
         this.errors.content = "Veuillez donner le resumé de votre livre";
       if (!this.item.price)
