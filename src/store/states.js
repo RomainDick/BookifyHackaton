@@ -30,6 +30,6 @@ export const states = {
     results : {},
     loading : false,
     loaded : false
-  }
+  },
 
 };
