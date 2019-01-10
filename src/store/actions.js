@@ -74,6 +74,23 @@ export const actions = {
 		});
 	},
 
+	[fromTypes.CREATE_PRODUCT]({commit}, payload){
+		Vue.http
+		.post(
+			Vue.config.environments.baseURL+'items',
+			payload.item,
+			{headers:{'Authorization' : 'Bearer '+payload.token}}
+		)
+		.then(response => {
+			console.log(response);
+			commit(
+				fromTypes.CREATE_PRODUCT,
+				response.body
+			);
+		}, response => {
+			console.log(response)
+		});
+	},
 
 	[fromTypes.LOGIN_USER]({commit}, payload){
 		Vue.http
