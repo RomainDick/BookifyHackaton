@@ -58,6 +58,10 @@ export default new Router({
       component: loadView('items'),
       beforeEnter: ifAuthenticated
     },
+    {
+      path: '/mentions_legales',
+      component:loadView('legal')
+    },
     { 
       path: '/404', 
       component: loadView('NotFound')
@@ -65,6 +69,6 @@ export default new Router({
     { 
       path: '*', 
       redirect: '/404' 
-    },  
+    }
   ]
 })
