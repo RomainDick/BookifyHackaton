@@ -2,14 +2,16 @@
   <section class="listItem">
 
 		<ul 
-			class = "listItem__list" 
 			v-if  = '!loading'
+			name  = "list" 
+			tag   = "ul"
+			class = "listItem__list"
 		>
 			<li 
 				class = "listItem__item"
-        v-for = "(item, index) in items" 
-				:key  = 'index'
-      >
+				v-for = "(item, index) in items" 
+				:key  = 'index + 1'
+			>
 				<ItemBook
 					:name        = 'item.title'
 					:description = 'item.content'
@@ -17,7 +19,6 @@
 					:price       = 'item.price'
 				></ItemBook>
 			</li>
-
 		</ul>
 
 		<div v-else>
@@ -57,7 +58,6 @@ export default {
   },
   
   methods:{
-
   }
   
 }
