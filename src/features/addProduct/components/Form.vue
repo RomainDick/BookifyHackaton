@@ -37,7 +37,7 @@
 
       <div>
         <label class="label">Prix en €</label>
-        <input type="number" name="price" id="price" step="1" v-model.number="item.price">
+        <input type="number" name="price" id="price" step="1" min="0" v-model.number="item.price">
         <label class="error" v-if="errors.price"><br/>{{ errors.price }}</label>
       </div>
 
@@ -81,7 +81,7 @@ export default {
         content: null,
         price: 0,
         user : null,
-        media : '/media/21',
+        media : null,
         category : null,
         
       }
@@ -124,17 +124,27 @@ export default {
 
     checkForm(){
       this.errors = [];
-      if (!this.item.title)
+      if (!this.item.title) {
         this.errors.title = "Veuillez donner un titre à votre annonce.";
-      if (!this.item.category)
+        this.errors.hasError = true;
+      }
+      if (!this.item.category) {
         this.errors.category = "Veuillez selectionner une categorie.";
-      if (!this.item.content)
+        this.errors.hasError = true;
+      }
+      if (!this.item.content) {
         this.errors.content = "Veuillez donner le resumé de votre livre";
-      if (!this.item.price)
+        this.errors.hasError = true;
+      }
+      if (!this.item.price) {
         this.errors.price = "Veuillez indiquer un prix.";
-      if (!this.media.data)
+        this.errors.hasError = true;
+      }
+      if (!this.media.data) {
         this.errors.media = "Veuillez inserer une image.";
-      if(!this.errors.length)
+        this.errors.hasError = true;
+      }
+      if(!this.errors.hasError)
         this.createMedia();
     },
 

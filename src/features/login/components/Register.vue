@@ -7,18 +7,28 @@
         type="text"
         v-model='user.email'
       >
+      <label class="error" v-if="errors.email"><br/>{{ errors.email }}</label>
 
+      <label class="label">Password</label>
+      <input 
+        type="password"
+        v-model='user.plainPassword'
+      >
+      <label class="error" v-if="errors.password"><br/>{{ errors.password }}</label>
+  
       <label class="label">Nom</label>
       <input 
         type="text"
         v-model='user.lastName'
       >
+      <label class="error" v-if="errors.lastName"><br/>{{ errors.lastName }}</label>
 
       <label class="label">Prenom</label>
       <input 
         type="text"
         v-model='user.firstName'
       >
+      <label class="error" v-if="errors.firstName"><br/>{{ errors.firstName }}</label>
 
       <label class="label">Genre</label>
       <select 
@@ -34,6 +44,8 @@
         type="text"
         v-model='user.phone'
       >
+      <label class="error" v-if="errors.phone"><br/>{{ errors.phone }}</label>
+
 
       <label class="label">Avatar</label>
       <input 
@@ -42,16 +54,19 @@
         v-on:change="createFile()"
       >
 
-      <label class="label">Password</label>
-      <input 
-        type="password"
-        v-model='user.plainPassword'
-      >
+    
+      <label class="label">Mes préférences</label>
+      <span v-for='(cat, index) in getCategories["hydra:member"]' :key="index">
+        <input type="checkbox" :value="'/categories/'+cat.id" :id="cat.name" v-model="user.categories">
+        <label :for="cat.name">{{cat.name}}</label>
+      </span>
+      <label class="error" v-if="errors.categories"><br/><br/>{{ errors.categories }}</label>
 
+      <br/>
       <input 
         type="submit"
-        value='login'
-        v-on:click='createMedia()'
+        value='Créer mon compte'
+        v-on:click='checkForm()'
       >
     </div>
     
@@ -79,7 +94,17 @@ export default {
         gender : 'M',
         phone : '',
         plainPassword : '',
-        media : null
+        media : null,
+        categories: []
+      },
+      errors: {
+        email: null,
+        lastName: null,
+        firstName: null,
+        phone: null,
+        password: null,
+        categories: null,
+        hasError: null,
       }
     };
   },
@@ -88,6 +113,16 @@ export default {
 		getMedia() {
 			return this.$store.getters.getMedia;
     },
+    getCategories() {
+      return this.$store.getters.getCategories;
+    },
+  },
+  
+  
+  mounted() {
+    this.$store.dispatch(
+        fromTypes.GET_CATEGORIES
+      );
 	},
 
   methods:{
@@ -124,7 +159,37 @@ export default {
       reader.onloadend = () => {
         this.media.data = reader.result
       }
-    }
+    },
+    
+    checkForm(){
+      this.errors = [];
+      if (!this.user.email) {
+        this.errors.email = "Veuillez saisir votre adresse email.";
+        this.errors.hasError = true;
+      }
+      if (!this.user.lastName) {
+        this.errors.lastName = "Veuillez saisir votre nom.";
+        this.errors.hasError = true;
+      }
+      if (!this.user.firstName) {
+        this.errors.firstName = "Veuillez saisir votre prenom";
+        this.errors.hasError = true;
+      }
+      if (!this.user.phone) {
+        this.errors.phone = "Veuillez saisir votre numéro de téléphone.";
+        this.errors.hasError = true;
+      }
+      if (!this.user.plainPassword) {
+        this.errors.password = "Veuillez saisir votre mot de passe.";
+        this.errors.hasError = true;
+      }
+      if (!this.user.categories.length) {
+        this.errors.categories = "Veuillez sélectionner au moins 1 categorie.";
+        this.errors.hasError = true;
+      }
+      if(!this.errors.hasError)
+        this.createMedia();
+    },
   }
 }
 </script>
@@ -136,5 +201,9 @@ export default {
 
 .register{
 
+}
+
+.error{
+    color: $red
 }
 </style>

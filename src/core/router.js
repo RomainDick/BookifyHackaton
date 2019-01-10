@@ -36,6 +36,11 @@ export default new Router({
       component: loadView('search')
     },
     {
+      path: '/all',
+      name: 'all',
+      component: loadView('all')
+    },
+    {
       path: '/items/:id',
       name: 'productPage',
       component: loadView('productPage')
