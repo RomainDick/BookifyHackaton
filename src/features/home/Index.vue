@@ -62,12 +62,7 @@ export default {
 			return this.$store.getters.getItemsLoaded;
     },
     getFirstItems(){
-      return [
-        this.getItems['hydra:member'][0],
-        this.getItems['hydra:member'][1],
-        this.getItems['hydra:member'][2],
-        this.getItems['hydra:member'][3]
-      ]
+      return this.getFirstItemsMethods()
     }
   },
   
@@ -76,6 +71,20 @@ export default {
 			fromTypes.GET_ITEMS
 		);
   },
+
+  methods:{
+    getFirstItemsMethods(){
+      if(this.getItems['hydra:member']){
+        return [
+          this.getItems['hydra:member'][0],
+          this.getItems['hydra:member'][1],
+          this.getItems['hydra:member'][2],
+          this.getItems['hydra:member'][3]
+        ]
+      }
+    }
+  }
+  
 }
 </script>
 

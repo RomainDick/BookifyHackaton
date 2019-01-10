@@ -37,7 +37,7 @@
 
       <div>
         <label class="label">Prix en €</label>
-        <input type="number" name="price" id="price" step="1" v-model.number="item.price">
+        <input type="number" name="price" id="price" step="1" min="0" v-model.number="item.price">
         <label class="error" v-if="errors.price"><br/>{{ errors.price }}</label>
       </div>
 
@@ -81,7 +81,7 @@ export default {
         content: null,
         price: 0,
         user : null,
-        media : '/media/21',
+        media : null,
         category : null,
         
       }
