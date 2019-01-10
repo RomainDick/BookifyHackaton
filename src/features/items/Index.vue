@@ -1,6 +1,11 @@
 <template>
 	<section>
 
+    <Banner
+      :title='"Mes annonces"'
+      :image='"mesAnnonces"'
+    ></Banner>
+
 		<ListItems
       :loading = 'getMyItemsLoading'
       :loaded  = 'getMyItemsLoaded'
@@ -13,12 +18,14 @@
 <script>
 import * as fromTypes from '@/store/types.js';
 import ListItems from '@/shared/ListItems';
+import Banner from '@/shared/Banner';
 
 export default {
   name: 'Items',
 
   components: {
-		ListItems
+		ListItems,
+		Banner
   },
 
 	data(){
@@ -53,7 +60,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 	.item_list{
 		display: flex;
 		flex-wrap: wrap;

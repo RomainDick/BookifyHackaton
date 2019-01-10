@@ -15,6 +15,9 @@
         <div class="productPage__title">{{getItem.category.name}} / {{getItem.title}}</div>
         <div class="productPage__texte">{{getItem.content}}</div>
         <div class="productPage__user">
+          <div class="image">
+            <img :src="baseUrl+getItem.user.media.url" alt="">
+          </div>
           <div class="name">
             En vente par {{getItem.user.firstName}} {{getItem.user.lastName}}
             le {{formattedDate}}
@@ -140,6 +143,14 @@ export default {
   
   &__user{
     margin:50px 0 0 0;
+    .image{
+      img{
+        border-radius: 50px;
+        height: 50px;
+        object-fit: cover;
+        width: 50px;
+      }
+    }
     .name{
       font-size: 15px;
       font-weight: 600;

@@ -7,9 +7,12 @@
     <img v-if='image == "search"' src="../assets/background/search.jpg" alt="">
     <img v-if='image == "addProduct"' src="../assets/background/addProduct.jpg" alt="">
     <img v-if='image == "productPage"' src="../assets/background/productPage.jpg" alt="">
+    <img v-if='image == "mesAnnonces"' src="../assets/background/mesAnnonces.jpg" alt="">
+    <img v-if='image == "all"' src="../assets/background/all.jpg" alt="">
     
     <h1 class="banner__title" v-html='title'>
     </h1>
+    
   </section>
 
 </template>

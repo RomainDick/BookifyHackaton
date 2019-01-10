@@ -40,6 +40,7 @@ export default {
       font-weight: 600;
       padding: 10px $marge;
       color:$black;
+      min-height: 52px;
     }
 
     &__description {
