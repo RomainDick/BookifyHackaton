@@ -16,10 +16,10 @@
           <router-link class='HeaderApp__link' to="/items">Mes annonces</router-link>
         </li>
         <li v-if='getUserLogin'>
-          <router-link class='HeaderApp__link' to="/addProduct">addProduct</router-link>
+          <router-link class='HeaderApp__link' to="/addProduct">Ajouter une annonce</router-link>
         </li>
         <li v-if='getUserLogin'>
-          <router-link class='HeaderApp__link' to="/account">account</router-link>
+          <router-link class='HeaderApp__link' to="/account">Mon compte</router-link>
         </li>
         
         <li>

@@ -43,7 +43,8 @@
 
       <div>
         <label class="label">Photo du livre</label>
-        <input type="file" name="picture" id="picture" accept="image/bmp,image/gif,image/jpeg,image/png,image/x-ms-bmp">
+        <input type="file" name="picture" id="picture" accept="image/bmp,image/gif,image/jpeg,image/png" ref="file" v-on:change="createFile()">
+        <label class="error" v-if="errors.media"><br/>{{ errors.media }}</label>
       </div>
       
       <div>
@@ -69,6 +70,11 @@ export default {
         category: null,
         content: null,
         price: null,
+        media: null,
+      },
+      media: {
+        data : '',
+        name: '',
       },
       item: {
         title: null,
@@ -88,7 +94,10 @@ export default {
     },
     getCategories() {
       return this.$store.getters.getCategories;
-    }
+    },
+    getMedia() {
+			return this.$store.getters.getMedia;
+    },
   },
 
   mounted() {
@@ -102,7 +111,7 @@ export default {
     createProduct(){
       this.item.user = '/users/'+this.getUserInfos.id;
       this.item.category = '/categories/'+ this.item.category;
-      console.log(this.item.category);
+      console.log(this.item);
       this.$store.dispatch(
         fromTypes.CREATE_PRODUCT,
         {
@@ -123,9 +132,42 @@ export default {
         this.errors.content = "Veuillez donner le resumé de votre livre";
       if (!this.item.price)
         this.errors.price = "Veuillez indiquer un prix.";
+      if (!this.media.data)
+        this.errors.media = "Veuillez inserer une image.";
       if(!this.errors.length)
-        this.createProduct();
+        this.createMedia();
     },
+
+    createMedia(){
+    this.item.user = '/users/'+this.getUserInfos.id;
+    this.item.category = '/categories/'+ this.item.category;
+    console.log(this.item);
+    console.log(this.mediaIsCreated)
+    if(this.mediaIsCreated){
+      this.$store.dispatch(
+        fromTypes.CREATE_MEDIA,
+        {
+          media : this.media,
+          item : this.item,
+          token : this.getUserInfos.token,
+          id : this.getUserInfos.id
+        }
+      );
+      this.media = null
+      }
+      this.mediaIsCreated = false
+    },
+
+    createFile(){
+      this.mediaIsCreated = true
+      let file = this.$refs.file.files[0]
+      this.media.name = file.name
+      let reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onloadend = () => {
+        this.media.data = reader.result
+      }
+    }
 	}
 }
 </script>

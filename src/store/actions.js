@@ -27,15 +27,32 @@ export const actions = {
 		)
 		.then(response => {
 			console.log(response)
-			payload.user.media = "/media/" + response.body.id
+			if (payload.user)
+				payload.user.media = "/media/" + response.body.id
+			if (payload.item)
+				payload.item.media = "/media/" + response.body.id
 			commit(
 				fromTypes.CREATE_MEDIA,
 				response.body
 			);
-			dispatch(
-				fromTypes.CREATE_USER,
-				payload.user
-			)
+			if (payload.user)
+			{
+				dispatch(
+					fromTypes.CREATE_USER,
+					payload.user
+				)
+			}
+			if (payload.item)
+			{
+				dispatch(
+					fromTypes.CREATE_PRODUCT,
+					{
+						item : payload.item,
+						token : payload.token,
+						id : payload.id
+					}
+				)
+			}
 		}, response => {
 			console.log(response)
 		});
