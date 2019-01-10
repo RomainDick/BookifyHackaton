@@ -61,7 +61,7 @@ export default {
 
 .legale {
     &__mainTitle {
-        color: #2d7e2a;
+        color: $summer-green;
         margin: 30px 0;
         font-size: 2.5rem;
         text-align: center;

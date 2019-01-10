@@ -30,7 +30,7 @@ export default {
   &__content{
     max-width: $main-witdh;
     margin:0 auto;
-    padding:30px $marge;
+    padding:15px $marge;
     display:flex;
     align-items: center;
     justify-content: space-between;
