@@ -60,6 +60,7 @@ export default {
 .HeaderApp{
   background-color: $moss-green;
   height: $height-nav;
+  z-index: $z-nav;
 
   &__content{
     display: flex;

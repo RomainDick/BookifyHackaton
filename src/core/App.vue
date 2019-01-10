@@ -4,7 +4,9 @@
     <HeaderApp></HeaderApp>
   
     <main class='main'>
-      <router-view/>
+      <transition name="fade">
+        <router-view></router-view>
+      </transition>
     </main>
 
     <FooterApp></FooterApp>
@@ -38,6 +40,16 @@ export default {
 @import "../assets/stylesheets/variables";
 @import "../assets/stylesheets/reset";
 
+.fade-enter-active, .fade-leave-active {
+  transition: all .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+  transform: translateY(- 50px);
+  position: absolute;
+  z-index: -1;
+}
+
 #app {
   background-color: $wild-sand;
   display: flex;
@@ -51,6 +63,7 @@ export default {
   margin:0 auto;
   max-width: $main-witdh;
   padding:$marge;
+  position: relative;
   width: 100%;
 }
 </style>
