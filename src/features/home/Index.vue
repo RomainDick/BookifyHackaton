@@ -16,9 +16,11 @@
         :loaded  = 'getItemsLoaded'
         :items   = "getFirstItems"
       ></ListItems>
-      <router-link class='home__link' to="/all">
-        Voir tous
-      </router-link>
+      <div class='home__link'>
+        <router-link to="/all">
+          Voir tous
+        </router-link>
+      </div>
     </div>
 
     <div>
@@ -29,7 +31,7 @@
         :items   = "getItems['hydra:member']"
       ></ListItems>
     </div>
-    
+
   </section>
 </template>
 
@@ -88,6 +90,25 @@ export default {
     font-size: 20px;
     font-weight: 600;
     padding:20px 0 0;
+  }
+
+  &__link{
+    text-align: center;
+
+    a{
+      background-color: $summer-green;
+      padding:10px 15px;
+      margin:0px auto 10px;
+      display: inline-block;
+      color:$white;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 150ms ease-out;
+      &:hover{
+        transform: scale(1.1);
+      }
+    }
   }
 }
 </style>
