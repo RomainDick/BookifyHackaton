@@ -13,6 +13,7 @@
 				:key  = 'index + 1'
 			>
 				<ItemBook
+					:id          = 'item["@id"]'
 					:name        = 'item.title'
 					:description = 'item.content'
 					:image       = '"http://62.210.144.173:81/"+item.media.url'
@@ -55,6 +56,7 @@ export default {
 	},
   
   mounted() {
+		console.log(this.items)
   },
   
   methods:{
