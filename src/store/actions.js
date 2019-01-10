@@ -1,21 +1,19 @@
 import Vue 						from 'vue';
 import * as fromTypes from './types.js';
 import jwt_decode 		from 'jwt-decode';
+import router         from '../core/router';
 
 export const actions = {
 
-	[fromTypes.CREATE_USER]({commit}, payload){
+	[fromTypes.CREATE_USER](payload){
 		Vue.http
 		.post(
 			Vue.config.environments.baseURL+'users',
 			payload
 		)
-		.then(response => {
-			console.log(response);
-			commit(
-				// fromTypes.CREATE_USER,
-				// response.body
-			);
+		.then(() => {
+			//redirect user
+			router.push({ path: '/login' })
 		}, response => {
 			console.log(response)
 		});
@@ -28,7 +26,6 @@ export const actions = {
 			payload.media
 		)
 		.then(response => {
-			console.log(response)
 			payload.user.media = payload.user.media + response.body.id
 			commit(
 				fromTypes.CREATE_MEDIA,
@@ -115,6 +112,10 @@ export const actions = {
 				fromTypes.LOGIN_USER_BOLEAN,
 				true
 			);
+
+			//redirect user
+			router.push({ path: '/' })
+
 		}, response => {
 			console.log(response)
 		});
