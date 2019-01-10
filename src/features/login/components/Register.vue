@@ -66,6 +66,7 @@ export default {
 
 	data(){
     return {
+      mediaIsCreated : false,
       formDisplay : 'register',
       media: {
         data : '',
@@ -78,7 +79,7 @@ export default {
         gender : 'M',
         phone : '',
         plainPassword : '',
-        media : "/media/"
+        media : null
       }
     };
   },
@@ -91,6 +92,8 @@ export default {
 
   methods:{
     createMedia(){
+      console.log(this.mediaIsCreated)
+    if(this.mediaIsCreated){
       this.$store.dispatch(
         fromTypes.CREATE_MEDIA,
         {
@@ -98,10 +101,22 @@ export default {
           user : this.user,
         }
       );
-      this.media = "/media/"
+      this.media = null
+      } else{
+        this.createUser()
+      }
+      this.mediaIsCreated = false
+    },
+
+    createUser(){
+      this.$store.dispatch(
+        fromTypes.CREATE_USER,
+        this.user
+      );
     },
 
     createFile(){
+      this.mediaIsCreated = true
       let file = this.$refs.file.files[0]
       this.media.name = file.name
       let reader = new FileReader()

@@ -15,6 +15,7 @@ export const mutations = {
 		state.search.loaded = payload;
 	},
 
+
 	[fromTypes.CREATE_PRODUCT](state, payload) {
 		state.create_product = {
 			...state.create_product,
@@ -22,6 +23,21 @@ export const mutations = {
 		};
 	},
 	
+
+	[fromTypes.GET_CATEGORIES](state, payload) {
+		state.categories = {
+			...state.categories,
+			results : payload,
+		};
+	},
+	[fromTypes.GET_CATEGORIES_LOADING](state, payload) {
+		state.categories.loading = payload;
+	},
+	[fromTypes.GET_CATEGORIES_LOADED](state, payload) {
+		state.categories.loaded = payload;
+	},
+
+
 	[fromTypes.GET_ITEMS](state, payload) {
 		state.items = {
 			...state.items,
@@ -49,6 +65,20 @@ export const mutations = {
 		state.item.loaded = payload;
 	},
 
+
+	[fromTypes.GET_MY_ITEMS](state, payload) {
+		state.items = {
+			...state.items,
+			results : payload,
+		};
+	},
+	[fromTypes.GET_MY_ITEMS_LOADING](state, payload) {
+		state.items.loading = payload;
+	},
+	[fromTypes.GET_MY_ITEMS_LOADED](state, payload) {
+		state.items.loaded = payload;
+	},
+
 	
 	[fromTypes.LOGIN_USER](state, payload) {
 		state.user = {
@@ -70,6 +100,7 @@ export const mutations = {
 		};
 	},
 
+	
 	[fromTypes.CREATE_MEDIA](state, payload) {
 		state.media = payload
 	},

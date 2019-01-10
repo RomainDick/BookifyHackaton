@@ -1,40 +1,24 @@
 <template>
 	<section>
 
-		<ul class="item_list" v-if='!getItemsLoading'>
-
-			<li v-for="(item, index) in getItems['hydra:member']" :key='index'>
-				<ItemBook
-					:name='item.title'
-					:description='item.content'
-					:image='"http://62.210.144.173:81/"+item.media.url'
-					:price='item.price'
-					:username='"test"'
-					:phone_number='"0000000000"'
-					:email='"test@test.fr"'
-				></ItemBook>
-			</li>
-
-		</ul>
-
-		<div v-else>
-			<Loader></Loader>
-		</div>
+		<ListItems
+      :loading = 'getMyItemsLoading'
+      :loaded  = 'getMyItemsLoaded'
+      :items   = "getMyItems['hydra:member']"
+    ></ListItems>
 
 	</section>
 </template>
 
 <script>
-import ItemBook from '@/shared/ItemBook';
-import Loader from '@/shared/Loader';
 import * as fromTypes from '@/store/types.js';
+import ListItems from '@/shared/ListItems';
 
 export default {
   name: 'Items',
 
   components: {
-		Loader,
-    ItemBook
+		ListItems
   },
 
 	data(){
@@ -43,20 +27,24 @@ export default {
   },
   
   computed: {
-		getItems() {
-			return this.$store.getters.getItems;
+		getMyItems() {
+			return this.$store.getters.getMyItems;
 		},
-		getItemsLoading() {
-			return this.$store.getters.getItemsLoading;
+		getMyItemsLoading() {
+			return this.$store.getters.getMyItemsLoading;
 		},
-		getItemsLoaded() {
-			return this.$store.getters.getItemsLoaded;
+		getMyItemsLoaded() {
+			return this.$store.getters.getMyItemsLoaded;
+		},
+		getUserInfos() {
+			return this.$store.getters.getUserInfos;
 		},
 	},
 	
 	mounted() {
 		this.$store.dispatch(
-			fromTypes.GET_ITEMS
+			fromTypes.GET_MY_ITEMS,
+			this.getUserInfos.id 
 		);
 	},
 

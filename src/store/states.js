@@ -37,5 +37,11 @@ export const states = {
     loading : false,
     loaded : false
   },
+  
+  categories : {
+    results : {},
+    loading : false,
+    loaded : false
+  }
 
 };
