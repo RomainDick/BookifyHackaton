@@ -23,8 +23,9 @@
       </div>
     </div>
 
-    <div>
-      <h1 class="home__title">Livre sélectionnés pour vous</h1>
+    <div v-if='getUserLogin'>
+      <!-- FAIRE LA REQUETTE AVEC LES PREF DE LUSER -->
+      <h1 class="home__title">Livres sélectionnés pour vous</h1>
       <ListItems
         :loading = 'getItemsLoading'
         :loaded  = 'getItemsLoaded'
@@ -52,6 +53,9 @@ export default {
   },
   
   computed: {
+		getUserLogin() {
+			return this.$store.getters.getUserLogin;
+		},
 		getItems() {
 			return this.$store.getters.getItems;
 		},
