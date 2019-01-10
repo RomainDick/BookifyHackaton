@@ -26,7 +26,7 @@
             Téléphone : {{getItem.user.phone}}
           </div>
         </div>
-        {{getItem.category}}
+        <!-- {{getItem.category}} -->
       </div>
     </div>
 
