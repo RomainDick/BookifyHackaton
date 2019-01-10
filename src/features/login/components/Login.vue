@@ -10,7 +10,7 @@
       >
       <label class="label">Password</label>
       <input 
-        type="text" 
+        type="password" 
         placeholder='password'
         v-model='user.password'
       >
