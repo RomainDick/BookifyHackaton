@@ -26,7 +26,8 @@ export const actions = {
 			payload.media
 		)
 		.then(response => {
-			payload.user.media = payload.user.media + response.body.id
+			console.log(response)
+			payload.user.media = "/media/" + response.body.id
 			commit(
 				fromTypes.CREATE_MEDIA,
 				response.body
@@ -35,6 +36,20 @@ export const actions = {
 				fromTypes.CREATE_USER,
 				payload.user
 			)
+		}, response => {
+			console.log(response)
+		});
+	},
+
+	[fromTypes.CREATE_USER](Object, payload){
+		console.log("payload user " + payload)
+		Vue.http
+		.post(
+			Vue.config.environments.baseURL+'users',
+			payload
+		)
+		.then(response => {
+			console.log(response)
 		}, response => {
 			console.log(response)
 		});
