@@ -3,7 +3,7 @@
 
   <div class="card">
 
-    <img class="avatar" :src="picture">
+    <img class="avatar" :src="this.getPicture">
     <img class="gender" :src="this.getGender" >
     <div class="infos">
       <div class="name capitalize">
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import Vue              from 'vue';
 import * as fromTypes from '@/store/types.js';
 import male from "@/assets/image/male.svg";
 import female from "@/assets/image/female.svg";
@@ -38,6 +39,13 @@ import female from "@/assets/image/female.svg";
         genderFemale:female,
       }
   },
+  methods: {
+    setMedia(){
+
+      this.picture = Vue.config.environments.baseURL + this.getUserData.media.url
+      console.log("setMedia " + this.picture )
+    }
+  },
 	computed: {
 		getUserInfos() {
 			return this.$store.getters.getUserInfos;
@@ -52,9 +60,20 @@ import female from "@/assets/image/female.svg";
       else{
          return this.genderFemale
       }
-    }
+    },
+
+    getPicture(){
+      if(this.getUserData.media != null){
+        this.setMedia()
+        return this.picture
+      } else {
+        return this.picture
+      }
   },
+
   
+ 
+ },
   mounted(){
       this.$store.dispatch(
         fromTypes.USER_INFO,
