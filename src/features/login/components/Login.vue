@@ -5,19 +5,22 @@
       <label class="label">Email</label>
       <input 
         type="text" 
-        placeholder='login'
+        placeholder='Email'
         v-model='user.username'
       >
-      <label class="label">Password</label>
+      <label class="error" v-if="errors.username"><br/>{{ errors.username }}</label>
+      <label class="label">Mot de passe</label>
       <input 
         type="text" 
-        placeholder='password'
+        placeholder='Mot de passe'
         v-model='user.password'
       >
+      <label class="error" v-if="errors.password"><br/>{{ errors.password }}</label>
+      <br/>
       <input 
         type="submit"
-        value='login'
-        v-on:click='loginUser()'
+        value='Connexion'
+        v-on:click='checkForm()'
       >
     </div>
     
@@ -33,8 +36,12 @@ export default {
 	data(){
     return {
       user : {
-        username: 'maxime@test.com',
-        password: 'azerty'
+        username: null,
+        password: null
+      },
+      errors : {
+        username: null,
+        password : null,
       }
     };
   },
@@ -50,6 +57,16 @@ export default {
         this.user
       );
     },
+
+    checkForm(){
+      this.errors = [];
+      if (!this.user.username)
+        this.errors.username = "Veuillez entre votre email";
+      if (!this.user.password)
+        this.errors.password = "Veuillez entrer votre mot de passe";
+      if(!this.errors.length)
+        this.loginUser();
+    },
 	}
 
 }
@@ -62,5 +79,9 @@ export default {
 
 .login{
 
+}
+
+.error{
+    color: $red
 }
 </style>
