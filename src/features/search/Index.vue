@@ -16,14 +16,15 @@
     </div>
 
     <div class="search__result">
-      <h1>
+
+      <h1 class="search__title" v-if='keyword.length > 0'>
         Il y a 
         <span v-if="getSearch['hydra:totalItems']">{{getSearch['hydra:totalItems']}}</span>
         <span v-else>0</span> 
         resultat(s) 
       </h1>
 
-      <div class="search__list" v-if='!getSearchLoading'>
+      <div class="search__list">
 
         <ListItems
           :loading = 'getSearchLoading'
@@ -77,15 +78,13 @@ export default {
 
 	methods:{
     startSearch(){
-      if(this.keyword.length > 3){
-        this.$store.dispatch(
-          fromTypes.SEARCH,
-          {
-            keyword : this.keyword,
-            token : this.getUserInfos.token
-          }
-        );
-      }
+      this.$store.dispatch(
+        fromTypes.SEARCH,
+        {
+          keyword : this.keyword,
+          token : this.getUserInfos.token
+        }
+      );
     }
 	}
 }
@@ -104,13 +103,19 @@ export default {
     input{
       appearance: none;
       background-color: transparent;
-      border-bottom: 1px solid $summer-green;
       border:0;
+      border-bottom: 1px solid $summer-green;
       font-size: 20px;
       height: 50px;
       outline: none;
       width: 100%;
     }
+  }
+
+  &__title{
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: 600;
   }
 
   &__result{

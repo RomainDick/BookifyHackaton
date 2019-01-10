@@ -56,7 +56,6 @@ export const actions = {
 			{headers:{'Authorization' : 'Bearer'+payload.token}}
 		)
 		.then(response => {
-			console.log(response);
 			commit(
 				fromTypes.SEARCH,
 				response.body

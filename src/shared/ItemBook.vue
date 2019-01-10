@@ -25,31 +25,37 @@ export default {
 
   .itemBook {
     background-color: $white;
+    box-shadow: 0 0 6px rgba($black, 0.1);
     width: 100%;
+    position: relative;
+    padding-bottom: $marge;
 
     &__name {
-      font-size: .875rem;
-      height:30px;
-      line-height: 1.286rem;
-      margin-top: 10px;
-      text-align: center;
+      font-size: 16px;
+      padding: 10px $marge;
+      font-weight: 600;
     }
 
     &__description {
-      height:30px;
-      margin-left: $marge;
-      margin-right:$marge;
+      height:55px;
+      margin: 5px $marge 10px;
       overflow: hidden;
       text-overflow: ellipsis;
+      font-size: 14px;
     }
 
     &__price {
-      color: #2d7e2a;
-      font-size: 1.275rem;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: $summer-green;
+      color: $white;
+      font-size: 16px;
       font-weight: 500;
-      height:30px;
-      margin-left: $marge;
-      text-align: left;
+      height:50px;
+      width: 50px;
+      text-align: center;
+      line-height: 50px;
     }
 
     &__image {

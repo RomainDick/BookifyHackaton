@@ -77,8 +77,8 @@ export default {
 	}
 	
 	&__item{
-		flex-basis: 25%;
-		margin:$marge 10px;
+		flex-basis: 23%;
+		margin:$marge 1%;
 	}
 }
 </style>
