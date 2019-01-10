@@ -4,35 +4,40 @@
     <div class="form">
       <div>
         <label class="label">Titre du livre</label>
-        <input type="text" name="title" id="title" v-model="title">
+        <input type="text" name="title" id="title" v-model="item.title">
         <label class="error" v-if="errors.title"><br/>{{ errors.title }}</label>
       </div>
-
       <div>
         <label class="label">Genre(s)</label>
-        <input type="checkbox" value="thriller" id="thriller" v-model="genre">
-        <label for="thriller">Thriller</label>
-        <input type="checkbox" value="policier" id="policier" v-model="genre">
-        <label for="policier">Policier</label>
-        <input type="checkbox" value="romance" id="romance" v-model="genre">
-        <label for="romance">Romance</label>
-        <input type="checkbox" value="theatre" id="theatre" v-model="genre">
-        <label for="theatre">Theatre</label>
-        <input type="checkbox" value="autre" id="autre" v-model="genre">
-        <label for="autre">Autre</label>
-        <label class="error" v-if="errors.genre"><br/><br/>{{ errors.genre }}</label>
-
+        <select v-model="item.category">
+          <option v-for='(cat, index) in getCategories["hydra:member"]' :key="index" v-bind:value="cat.id">{{cat.name}}</option>
+        </select>
+        <label class="error" v-if="errors.category"><br/><br/>{{ errors.category }}</label>
       </div>
+  <!--    <div>
+        <label class="label">Genre(s)</label>
+        <input type="checkbox" value="thriller" id="thriller" v-model="item.genre">
+        <label for="thriller">Thriller</label>
+        <input type="checkbox" value="policier" id="policier" v-model="item.genre">
+        <label for="policier">Policier</label>
+        <input type="checkbox" value="romance" id="romance" v-model="item.genre">
+        <label for="romance">Romance</label>
+        <input type="checkbox" value="theatre" id="theatre" v-model="item.genre">
+        <label for="theatre">Theatre</label>
+        <input type="checkbox" value="autre" id="autre" v-model="item.genre">
+        <label for="autre">Autre</label>
+
+      </div> -->
 
       <div>
         <label class="label">Résume du livre</label>
-        <textarea name="resume" id="resume" v-model="resume"></textarea>
-        <label class="error" v-if="errors.resume"><br/>{{ errors.resume }}</label>
+        <textarea name="content" id="content" v-model="item.content"></textarea>
+        <label class="error" v-if="errors.content"><br/>{{ errors.content }}</label>
       </div>
 
       <div>
         <label class="label">Prix en €</label>
-        <input type="number" name="price" id="price" step="0.01" v-model="price">
+        <input type="number" name="price" id="price" step="1" v-model.number="item.price">
         <label class="error" v-if="errors.price"><br/>{{ errors.price }}</label>
       </div>
 
@@ -49,6 +54,7 @@
 </template>
 
 <script>
+import * as fromTypes from '@/store/types.js';
 
 export default {
   name: 'Form',
@@ -60,35 +66,66 @@ export default {
     return {
       errors: {
         title: null,
-        genre: null,
-        resume: null,
+        category: null,
+        content: null,
         price: null,
       },
-      title: null,
-      genre: [],
-      resume: null,
-      price: null,
+      item: {
+        title: null,
+        content: null,
+        price: 0,
+        user : null,
+        media : '/media/21',
+        category : null,
+        
+      }
     };
   },
 
+  computed : {
+    getUserInfos() {
+			return this.$store.getters.getUserInfos;
+    },
+    getCategories() {
+      return this.$store.getters.getCategories;
+    }
+  },
+
   mounted() {
+    this.$store.dispatch(
+        fromTypes.GET_CATEGORIES
+      );
 	},
 
 	methods:{ 
+      
+    createProduct(){
+      this.item.user = '/users/'+this.getUserInfos.id;
+      this.item.category = '/categories/'+ this.item.category;
+      console.log(this.item.category);
+      this.$store.dispatch(
+        fromTypes.CREATE_PRODUCT,
+        {
+          item : this.item,
+          token : this.getUserInfos.token,
+          id : this.getUserInfos.id
+        }
+      );
+    },
+
     checkForm(){
       this.errors = [];
-      if (!this.title)
+      if (!this.item.title)
         this.errors.title = "Veuillez donner un titre à votre annonce.";
-      if (!this.genre.length)
-        this.errors.genre = "Veuillez selectionner au moins 1 genre.";
-      if (!this.resume)
-        this.errors.resume = "Veuillez donner le resumé de votre livre";
-      if (!this.price)
+      if (!this.item.category)
+        this.errors.category = "Veuillez selectionner une categorie.";
+      if (!this.item.content)
+        this.errors.content = "Veuillez donner le resumé de votre livre";
+      if (!this.item.price)
         this.errors.price = "Veuillez indiquer un prix.";
+      if(!this.errors.length)
+        this.createProduct();
     },
-    addItem(){
-      console.log('addItem work')
-    }
 	}
 }
 </script>

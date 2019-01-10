@@ -60,6 +60,8 @@ export default {
 .HeaderApp{
   background-color: $moss-green;
   height: $height-nav;
+  transform: translateX(-15px);
+  width: calc(100% + 2*#{$marge});
   z-index: $z-nav;
 
   &__content{

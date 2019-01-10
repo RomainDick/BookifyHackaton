@@ -15,6 +15,26 @@ export const mutations = {
 		state.search.loaded = payload;
 	},
 
+	[fromTypes.CREATE_PRODUCT](state, payload) {
+		state.create_product = {
+			...state.create_product,
+			results : payload,
+		};
+	},
+	
+
+	[fromTypes.GET_CATEGORIES](state, payload) {
+		state.categories = {
+			...state.categories,
+			results : payload,
+		};
+	},
+	[fromTypes.GET_CATEGORIES_LOADING](state, payload) {
+		state.categories.loading = payload;
+	},
+	[fromTypes.GET_CATEGORIES_LOADED](state, payload) {
+		state.categories.loaded = payload;
+	},
 
 	[fromTypes.GET_ITEMS](state, payload) {
 		state.items = {
