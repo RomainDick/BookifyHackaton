@@ -23,6 +23,8 @@ export default {
 
 .FooterApp{
   background-color: $summer-green;
+  width: calc(100% + 2*#{$marge});
+  transform: translateX(-15px);
 
   &__content{
     max-width: $main-witdh;
