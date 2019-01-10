@@ -2,7 +2,6 @@
 
   <router-link :to="id" class="itemBook">
     <img v-bind:src=image class="itemBook__image">
-    <div class="itemBook__name">{{id}}</div>
     <div class="itemBook__name">{{name}}</div>
     <div class="itemBook__description">{{description}}</div>
     <div class="itemBook__price">{{price}}€</div>
