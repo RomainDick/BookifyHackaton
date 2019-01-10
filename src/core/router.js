@@ -1,10 +1,19 @@
-import Vue    from 'vue'
-import Router from 'vue-router'
+import Vue        from 'vue'
+import Router     from 'vue-router'
+import { store }  from '../store/store';
 
 Vue.use(Router)
 
 function loadView(view) {
   return () => import(/* webpackChunkName: "view-[request]" */ `@/features/${view}/Index.vue`)
+}
+
+const ifAuthenticated = (to, from, next) => {
+  if (store.getters.getUserLogin) {
+    next()
+    return
+  }
+  next('/login')
 }
 
 export default new Router({
@@ -19,7 +28,8 @@ export default new Router({
     {
       path: '/account',
       name: 'account',
-      component: loadView('account')
+      component: loadView('account'),
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/login',
@@ -29,12 +39,14 @@ export default new Router({
     {
       path: '/addProduct',
       name: 'addProduct',
-      component: loadView('addProduct')
+      component: loadView('addProduct'),
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/items',
       name: 'items',
-      component: loadView('items')
+      component: loadView('items'),
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/search',

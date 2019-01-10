@@ -56,13 +56,13 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
+  padding:0 $marge;
 }
 
 .main{
   flex:1;
-  margin:0 auto;
   max-width: $main-witdh;
-  padding:$marge;
+  margin:$marge auto;
   position: relative;
   width: 100%;
 }
