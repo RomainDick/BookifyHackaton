@@ -35,6 +35,20 @@ export const mutations = {
 		state.items.loaded = payload;
 	},
 
+
+	[fromTypes.GET_ITEM](state, payload) {
+		state.item = {
+			...state.item,
+			results : payload,
+		};
+	},
+	[fromTypes.GET_ITEM_LOADING](state, payload) {
+		state.item.loading = payload;
+	},
+	[fromTypes.GET_ITEM_LOADED](state, payload) {
+		state.item.loaded = payload;
+	},
+
 	
 	[fromTypes.LOGIN_USER](state, payload) {
 		state.user = {

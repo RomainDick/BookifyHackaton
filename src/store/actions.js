@@ -149,7 +149,6 @@ export const actions = {
 			Vue.config.environments.baseURL+'items'
 		)
 		.then(response => {
-			setTimeout(() => {
 				commit(
 					fromTypes.GET_ITEMS,
 					response.body
@@ -162,11 +161,43 @@ export const actions = {
 					fromTypes.GET_ITEMS_LOADING,
 					false
 				);
-			}, 500);
 		}, response => {
 			console.log(response);
 			commit(
 				fromTypes.GET_ITEMS_LOADING,
+				false
+			);
+		});
+	},
+
+
+	[fromTypes.GET_ITEM]({commit}, payload){
+		commit(
+			fromTypes.GET_ITEM_LOADING,
+			true
+		);
+
+		Vue.http
+		.get(
+			Vue.config.environments.baseURL+'items/'+payload
+		)
+		.then(response => {
+			commit(
+				fromTypes.GET_ITEM,
+				response.body
+			);
+			commit(
+				fromTypes.GET_ITEM_LOADED,
+				true
+			);
+			commit(
+				fromTypes.GET_ITEM_LOADING,
+				false
+			);
+		}, response => {
+			console.log(response);
+			commit(
+				fromTypes.GET_ITEM_LOADING,
 				false
 			);
 		});

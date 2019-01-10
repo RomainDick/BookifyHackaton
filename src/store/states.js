@@ -32,4 +32,10 @@ export const states = {
     loaded : false
   },
 
+  item : {
+    results : {},
+    loading : false,
+    loaded : false
+  },
+
 };

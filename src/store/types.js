@@ -1,5 +1,9 @@
 export const UPDATE_TEST        = '[TEST] update test bolean';
 
+export const GET_ITEM           = '[PRODUCT PAGE] get item';
+export const GET_ITEM_LOADING   = '[PRODUCT PAGE LOADING] get item loading';
+export const GET_ITEM_LOADED    = '[PRODUCT PAGE LOADED] get item loaded';
+
 export const GET_ITEMS          = '[HOME] get items';
 export const GET_ITEMS_LOADING  = '[HOME LOADING] get items loading';
 export const GET_ITEMS_LOADED   = '[HOME LOADED] get items loaded';
@@ -11,7 +15,7 @@ export const SEARCH_LOADED      = '[SEARCH_LOADED] CHANGE LOADED';
 export const CREATE_USER        = '[LOGIN] Create user';
 export const CREATE_MEDIA       = '[LOGIN] Create media';
 
-export const CREATE_PRODUCT             = '[PRODUCT] Create product';
+export const CREATE_PRODUCT     = '[PRODUCT] Create product';
 
 export const LOGIN_USER         = '[LOGIN] login user';
 export const LOGIN_USER_BOLEAN  = '[LOGIN] login user bolean';

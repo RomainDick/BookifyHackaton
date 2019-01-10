@@ -26,15 +26,25 @@ export default new Router({
       component: loadView('home')
     },
     {
+      path: '/login',
+      name: 'login',
+      component: loadView('login')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: loadView('search')
+    },
+    {
+      path: '/items/:id',
+      name: 'productPage',
+      component: loadView('productPage')
+    },
+    {
       path: '/account',
       name: 'account',
       component: loadView('account'),
       beforeEnter: ifAuthenticated
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: loadView('login')
     },
     {
       path: '/addProduct',
@@ -48,20 +58,10 @@ export default new Router({
       component: loadView('items'),
       beforeEnter: ifAuthenticated
     },
-    {
-      path: '/search',
-      name: 'search',
-      component: loadView('search')
-    },
-    {
-      path: '/items/:id',
-      name: 'productPage',
-      component: loadView('productPage')
-    },
     { 
       path: '/404', 
       component: loadView('NotFound')
-    },  
+    }, 
     { 
       path: '*', 
       redirect: '/404' 
