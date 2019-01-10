@@ -17,6 +17,7 @@ export default {
 
 	data(){
     return {
+      id : 0
     };
   },
 
@@ -25,6 +26,8 @@ export default {
 
 
 	mounted() {
+    this.id = this.$route.params.id;
+    console.log(this.id)
 	},
 
 	methods:{
