@@ -11,7 +11,7 @@
       <label class="error" v-if="errors.username"><br/>{{ errors.username }}</label>
       <label class="label">Mot de passe</label>
       <input 
-        type="text" 
+        type="password" 
         placeholder='Mot de passe'
         v-model='user.password'
       >
