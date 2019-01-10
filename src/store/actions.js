@@ -272,4 +272,37 @@ export const actions = {
 		});
 	},
 	
+	[fromTypes.GET_CATEGORIES]({commit}){
+		commit(
+			fromTypes.GET_CATEGORIES_LOADING,
+			true
+		);
+
+		Vue.http
+		.get(
+			Vue.config.environments.baseURL+'categories'
+		)
+		.then(response => {
+			setTimeout(() => {
+				commit(
+					fromTypes.GET_CATEGORIES,
+					response.body
+				);
+				commit(
+					fromTypes.GET_CATEGORIES_LOADED,
+					true
+				);
+				commit(
+					fromTypes.GET_CATEGORIES_LOADING,
+					false
+				);
+			}, 500);
+		}, response => {
+			console.log(response);
+			commit(
+				fromTypes.GET_CATEGORIES_LOADING,
+				false
+			);
+		});
+	},
 };
