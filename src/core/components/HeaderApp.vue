@@ -9,7 +9,7 @@
       <ul class='HeaderApp__list'>
 
         <li v-if='!getUserLogin'>
-          <router-link class='HeaderApp__link' to="/login">Se connecter</router-link>
+          <router-link class='HeaderApp__link' to="/login">Se connecter / S'inscrire</router-link>
         </li>
 
         <li v-if='getUserLogin'>

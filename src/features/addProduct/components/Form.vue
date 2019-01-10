@@ -124,17 +124,27 @@ export default {
 
     checkForm(){
       this.errors = [];
-      if (!this.item.title)
+      if (!this.item.title) {
         this.errors.title = "Veuillez donner un titre à votre annonce.";
-      if (!this.item.category)
+        this.errors.hasError = true;
+      }
+      if (!this.item.category) {
         this.errors.category = "Veuillez selectionner une categorie.";
-      if (!this.item.content)
+        this.errors.hasError = true;
+      }
+      if (!this.item.content) {
         this.errors.content = "Veuillez donner le resumé de votre livre";
-      if (!this.item.price)
+        this.errors.hasError = true;
+      }
+      if (!this.item.price) {
         this.errors.price = "Veuillez indiquer un prix.";
-      if (!this.media.data)
+        this.errors.hasError = true;
+      }
+      if (!this.media.data) {
         this.errors.media = "Veuillez inserer une image.";
-      if(!this.errors.length)
+        this.errors.hasError = true;
+      }
+      if(!this.errors.hasError)
         this.createMedia();
     },
 

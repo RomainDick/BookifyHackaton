@@ -9,6 +9,13 @@
       >
       <label class="error" v-if="errors.email"><br/>{{ errors.email }}</label>
 
+      <label class="label">Password</label>
+      <input 
+        type="password"
+        v-model='user.plainPassword'
+      >
+      <label class="error" v-if="errors.password"><br/>{{ errors.password }}</label>
+  
       <label class="label">Nom</label>
       <input 
         type="text"
@@ -47,12 +54,13 @@
         v-on:change="createFile()"
       >
 
-      <label class="label">Password</label>
-      <input 
-        type="password"
-        v-model='user.plainPassword'
-      >
-      <label class="error" v-if="errors.password"><br/>{{ errors.password }}</label>
+    
+      <label class="label">Mes préférences</label>
+      <span v-for='(cat, index) in getCategories["hydra:member"]' :key="index">
+        <input type="checkbox" :value="'/categories/'+cat.id" :id="cat.name" v-model="user.categories">
+        <label :for="cat.name">{{cat.name}}</label>
+      </span>
+      <label class="error" v-if="errors.categories"><br/><br/>{{ errors.categories }}</label>
 
       <br/>
       <input 
@@ -86,7 +94,8 @@ export default {
         gender : 'M',
         phone : '',
         plainPassword : '',
-        media : null
+        media : null,
+        categories: []
       },
       errors: {
         email: null,
@@ -94,6 +103,8 @@ export default {
         firstName: null,
         phone: null,
         password: null,
+        categories: null,
+        hasError: null,
       }
     };
   },
@@ -102,6 +113,16 @@ export default {
 		getMedia() {
 			return this.$store.getters.getMedia;
     },
+    getCategories() {
+      return this.$store.getters.getCategories;
+    },
+  },
+  
+  
+  mounted() {
+    this.$store.dispatch(
+        fromTypes.GET_CATEGORIES
+      );
 	},
 
   methods:{
@@ -142,17 +163,31 @@ export default {
     
     checkForm(){
       this.errors = [];
-      if (!this.user.email)
+      if (!this.user.email) {
         this.errors.email = "Veuillez saisir votre adresse email.";
-      if (!this.user.lastName)
+        this.errors.hasError = true;
+      }
+      if (!this.user.lastName) {
         this.errors.lastName = "Veuillez saisir votre nom.";
-      if (!this.user.firstName)
+        this.errors.hasError = true;
+      }
+      if (!this.user.firstName) {
         this.errors.firstName = "Veuillez saisir votre prenom";
-      if (!this.user.phone)
+        this.errors.hasError = true;
+      }
+      if (!this.user.phone) {
         this.errors.phone = "Veuillez saisir votre numéro de téléphone.";
-      if (!this.user.plainPassword)
+        this.errors.hasError = true;
+      }
+      if (!this.user.plainPassword) {
         this.errors.password = "Veuillez saisir votre mot de passe.";
-      if(!this.errors.length)
+        this.errors.hasError = true;
+      }
+      if (!this.user.categories.length) {
+        this.errors.categories = "Veuillez sélectionner au moins 1 categorie.";
+        this.errors.hasError = true;
+      }
+      if(!this.errors.hasError)
         this.createMedia();
     },
   }

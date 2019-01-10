@@ -42,6 +42,7 @@ export default {
       errors : {
         username: null,
         password : null,
+        hasError : false,
       }
     };
   },
@@ -60,11 +61,15 @@ export default {
 
     checkForm(){
       this.errors = [];
-      if (!this.user.username)
+      if (!this.user.username) {
         this.errors.username = "Veuillez entre votre email";
-      if (!this.user.password)
+        this.errors.hasError = true;
+      }
+      if (!this.user.password) {
         this.errors.password = "Veuillez entrer votre mot de passe";
-      if(!this.errors.length)
+        this.errors.hasError = true;
+      }
+      if(!this.errors.hasError)
         this.loginUser();
     },
 	}
