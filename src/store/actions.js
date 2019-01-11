@@ -5,7 +5,9 @@ import router         from '../core/router';
 
 export const actions = {
 
-	[fromTypes.CREATE_USER]({commit}, payload){
+	[fromTypes.CREATE_USER]({commit, dispatch}, payload){
+		
+
 		commit(
 			fromTypes.GET_ERRORS,
 			{
@@ -20,8 +22,16 @@ export const actions = {
 			payload
 		)
 		.then(() => {
+			var user = {
+				username : payload.email,
+				password : payload.plainPassword,
+			}
+
 			//redirect user
-			router.push({ path: '/login' });
+			dispatch(
+				fromTypes.LOGIN_USER,
+				user,
+			);
 		}, response => {
 			console.log(response.status);
 			if (response.status == 400){
