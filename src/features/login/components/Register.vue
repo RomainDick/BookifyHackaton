@@ -47,6 +47,19 @@
       <label class="error" v-if="errors.phone"><br/>{{ errors.phone }}</label>
 
 
+      <label class="label">Adresse</label>
+      <SelectDepart
+        v-on:new-dept="newDept"
+      ></SelectDepart>
+      <label class="error" v-if="errors.department"><br/>{{ errors.department }}</label>
+      <input 
+        type="text"
+        placeholder="Ville"
+        v-model='user.city'
+      >
+      <label class="error" v-if="errors.city"><br/>{{ errors.city }}</label>
+
+
       <label class="label">Avatar</label>
       <input 
         type="file"
@@ -75,9 +88,14 @@
 
 <script>
 import * as fromTypes from '@/store/types.js';
+import SelectDepart from '@/shared/SelectDepart';
 
 export default {
   name: 'register',
+
+  components: {
+    SelectDepart
+  },
 
 	data(){
     return {
@@ -95,7 +113,9 @@ export default {
         phone : '',
         plainPassword : '',
         media : null,
-        categories: []
+        categories: [],
+        city: '',
+        department : '00'
       },
       errors: {
         email: null,
@@ -105,6 +125,8 @@ export default {
         password: null,
         categories: null,
         hasError: null,
+        department: null,
+        city: null,
       }
     };
   },
@@ -121,11 +143,15 @@ export default {
   
   mounted() {
     this.$store.dispatch(
-        fromTypes.GET_CATEGORIES
-      );
+      fromTypes.GET_CATEGORIES
+    );
 	},
 
   methods:{
+    newDept(value){
+      this.user.department = value;
+    },
+
     createMedia(){
       console.log(this.mediaIsCreated)
     if(this.mediaIsCreated){
@@ -177,6 +203,14 @@ export default {
       }
       if (!this.user.phone) {
         this.errors.phone = "Veuillez saisir votre numéro de téléphone.";
+        this.errors.hasError = true;
+      }
+      if (this.user.department == "00") {
+        this.errors.department = "Veuillez saisir votre département.";
+        this.errors.hasError = true;
+      }
+      if (!this.user.city) {
+        this.errors.city = "Veuillez saisir votre ville.";
         this.errors.hasError = true;
       }
       if (!this.user.plainPassword) {

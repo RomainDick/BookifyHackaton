@@ -111,7 +111,7 @@ export const actions = {
 		});
 	},
 
-	[fromTypes.LOGIN_USER]({commit}, payload){
+	[fromTypes.LOGIN_USER]({commit, dispatch}, payload){
 		Vue.http
 		.post(
 			Vue.config.environments.baseURL+'login',
@@ -131,10 +131,10 @@ export const actions = {
 				fromTypes.LOGIN_USER_BOLEAN,
 				true
 			);
-
-			//redirect user
-			router.push({ path: '/' })
-
+			dispatch(
+				fromTypes.USER_INFO,
+				user
+			);
 		}, response => {
 			console.log(response)
 		});
@@ -151,7 +151,8 @@ export const actions = {
 				fromTypes.USER_INFO,
 				response.body
 			);
-
+			//redirect user
+			router.push({ path: '/' })
 		}, response => {
 			console.log(response)
 		});

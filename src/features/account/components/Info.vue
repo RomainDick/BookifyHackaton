@@ -26,7 +26,7 @@
 
 <script>
 import Vue              from 'vue';
-import * as fromTypes from '@/store/types.js';
+// import * as fromTypes from '@/store/types.js';
 import male from "@/assets/image/male.svg";
 import female from "@/assets/image/female.svg";
 
@@ -35,59 +35,49 @@ import female from "@/assets/image/female.svg";
     props: {
       msg: String
     },
+
     data() {
       return {
         picture: 'https://image.flaticon.com/icons/svg/149/149992.svg',
         genderMale:male,
         genderFemale:female,
       }
-  },
-  methods: {
-    setMedia(){
-
-      this.picture = Vue.config.environments.baseURL + this.getUserData.media.url
-      console.log("setMedia " + this.picture )
-    }
-  },
-	computed: {
-		getUserInfos() {
-			return this.$store.getters.getUserInfos;
-    },
-    getUserData() {
-			return this.$store.getters.getUserData;
-    },
-    getGender(){
-      if(this.getUserData.gender == 'M'){
-        return this.genderMale
-      }
-      else{
-         return this.genderFemale
-      }
     },
 
-    getPicture(){
-      if(this.getUserData.media != null){
-        this.setMedia()
-        return this.picture
-      } else {
-        return this.picture
+    methods: {
+      setMedia(){
+        this.picture = Vue.config.environments.baseURL + this.getUserData.media.url
+        console.log("setMedia " + this.picture )
       }
-  },
-
-  
- 
- },
-  mounted(){
-      this.$store.dispatch(
-        fromTypes.USER_INFO,
-        {
-          id : this.getUserInfos.id,
-          token : this.getUserInfos.token
+    },
+    computed: {
+      getUserInfos() {
+        return this.$store.getters.getUserInfos;
+      },
+      getUserData() {
+        return this.$store.getters.getUserData;
+      },
+      getGender(){
+        if(this.getUserData.gender == 'M'){
+          return this.genderMale
         }
-      );
-  }
- }
+        else{
+          return this.genderFemale
+        }
+      },
+      getPicture(){
+        if(this.getUserData.media != null){
+          this.setMedia()
+          return this.picture
+        } else {
+          return this.picture
+        }
+      },
+    },
 
+    mounted(){
+    }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
