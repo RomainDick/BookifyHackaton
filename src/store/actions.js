@@ -58,21 +58,6 @@ export const actions = {
 		});
 	},
 
-	[fromTypes.CREATE_USER](Object, payload){
-		console.log("payload user " + payload)
-		Vue.http
-		.post(
-			Vue.config.environments.baseURL+'users',
-			payload
-		)
-		.then(response => {
-			console.log(response)
-		}, response => {
-			console.log(response)
-		});
-	},
-
-
 	[fromTypes.SEARCH]({commit}, payload){
 		commit(
 			fromTypes.SEARCH_LOADING,
