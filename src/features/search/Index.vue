@@ -24,7 +24,7 @@
         resultat(s) 
       </h1>
 
-      <div class="search__list">
+      <div class="search__list" v-if='keyword.length > 0'>
 
         <ListItems
           :loading = 'getSearchLoading'
