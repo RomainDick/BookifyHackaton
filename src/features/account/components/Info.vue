@@ -12,6 +12,9 @@
       <div class="email">
         <i>{{ this.getUserData.email }}</i>
       </div>
+      <div class="departmentCity">
+        <i>{{ this.getUserData.department }} / {{ this.getUserData.city }}</i>
+      </div>
       <div class="phone">
         <i>{{ this.getUserData.phone }}</i>
       </div>

@@ -3,11 +3,11 @@ import * as fromTypes from './types.js';
 export const mutations = {
 
 	[fromTypes.GET_ERRORS](state, payload) {
-		if (payload.login)
+		if (payload.login != undefined)
 			state.errors.login = payload.login;
-		if (payload.server)
+		if (payload.server != undefined)
 			state.errors.server = payload.server;
-		if (payload.register)
+		if (payload.register != undefined)
 			state.errors.register = payload.register;
 
 	},
@@ -127,6 +127,14 @@ export const mutations = {
 	
 	[fromTypes.CREATE_MEDIA](state, payload) {
 		state.media = payload
+	},
+
+	[fromTypes.DECO_USER](state) {
+		state.user.login=false
+		state.user.infos.token = null
+		state.user.infos.id = null
+		state.user.data.department = "00"
+
 	},
 	
 	// [fromTypes.UPDATE_LOADER](state, payload) {
