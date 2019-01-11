@@ -114,6 +114,14 @@ export const mutations = {
 	[fromTypes.CREATE_MEDIA](state, payload) {
 		state.media = payload
 	},
+
+	[fromTypes.DECO_USER](state) {
+		state.user.login=false
+		state.user.infos.token = null
+		state.user.infos.id = null
+		state.user.data.department = "00"
+
+	},
 	
 	// [fromTypes.UPDATE_LOADER](state, payload) {
 	// 	state.loader = payload;

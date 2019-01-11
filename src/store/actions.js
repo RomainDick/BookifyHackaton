@@ -372,4 +372,9 @@ export const actions = {
 			);
 		});
 	},
+	[fromTypes.DECO_USER]({commit}){
+		commit(
+			fromTypes.DECO_USER,
+		);
+	},
 };
