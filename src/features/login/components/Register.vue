@@ -5,13 +5,15 @@
       <label class="label">Email</label>
       <input 
         type="text"
+        placeholder='Email'
         v-model='user.email'
       >
       <label class="error" v-if="errors.email"><br/>{{ errors.email }}</label>
 
-      <label class="label">Password</label>
+      <label class="label">Mot de passe</label>
       <input 
         type="password"
+        placeholder='Mot de passe'
         v-model='user.plainPassword'
       >
       <label class="error" v-if="errors.password"><br/>{{ errors.password }}</label>
@@ -19,6 +21,7 @@
       <label class="label">Nom</label>
       <input 
         type="text"
+        placeholder='Nom'
         v-model='user.lastName'
       >
       <label class="error" v-if="errors.lastName"><br/>{{ errors.lastName }}</label>
@@ -26,6 +29,7 @@
       <label class="label">Prenom</label>
       <input 
         type="text"
+        placeholder='Prenom'
         v-model='user.firstName'
       >
       <label class="error" v-if="errors.firstName"><br/>{{ errors.firstName }}</label>
@@ -42,6 +46,7 @@
       <label class="label">Téléphone</label>
       <input 
         type="text"
+        placeholder='Téléphone'
         v-model='user.phone'
       >
       <label class="error" v-if="errors.phone"><br/>{{ errors.phone }}</label>
@@ -76,7 +81,7 @@
       <label class="error" v-if="errors.categories"><br/><br/>{{ errors.categories }}</label>
       <br/>
 
-      <label class="error" v-if="this.getErrors.register"><br/>Email déjà utilisé</label>
+      <label class="error" v-if="this.getErrors.register"><br/>Cette adresse email est déjà utilisée</label>
       <label class="error" v-if="this.getErrors.server"><br/>Erreur serveur</label>
 
       <br/>
