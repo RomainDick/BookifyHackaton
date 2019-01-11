@@ -13,7 +13,7 @@ export const states = {
       phone : null,
       birthday : null,
       email : null,
-      department : "",
+      department : "00",
     }
   },
 
