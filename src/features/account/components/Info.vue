@@ -23,7 +23,7 @@
 
 <script>
 import Vue              from 'vue';
-import * as fromTypes from '@/store/types.js';
+// import * as fromTypes from '@/store/types.js';
 import male from "@/assets/image/male.svg";
 import female from "@/assets/image/female.svg";
 
@@ -75,13 +75,6 @@ import female from "@/assets/image/female.svg";
  
  },
   mounted(){
-      this.$store.dispatch(
-        fromTypes.USER_INFO,
-        {
-          id : this.getUserInfos.id,
-          token : this.getUserInfos.token
-        }
-      );
   }
  }
 

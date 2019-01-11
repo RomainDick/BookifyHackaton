@@ -1,14 +1,21 @@
 <template>
   <section class="filters">
-    Filters
+    <SelectDepart
+      v-bind:default="getUserData.department"
+      v-on:new-dept="newDept"
+    ></SelectDepart>
   </section>
 </template>
 
 <script>
+// import * as fromTypes from '@/store/types.js';
+import SelectDepart from '@/shared/SelectDepart';
+
 export default {
   name: 'Filters',
 
   components: {
+    SelectDepart
   },
 
 	data(){
@@ -17,16 +24,23 @@ export default {
   },
   
   computed: {
-
+		getUserInfos() {
+			return this.$store.getters.getUserInfos;
+    },
+    getUserData() {
+			return this.$store.getters.getUserData;
+    },
 	},
 
   methods:{
+    newDept(value){
+      console.log(value)
+    }
   }
   
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
 @import "../../../assets/stylesheets/variables";

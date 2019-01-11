@@ -1,5 +1,5 @@
 <template>
-  <section class='productPage' v-if='getItemLoaded'>
+  <section class='productPage' v-if='getItemLoaded && getItemLoaded'>
 
     <Banner
       :title='getItem.title'
@@ -8,24 +8,25 @@
 
     <div class="productPage__content" v-if='!getItemLoading'>
       <div class="productPage__image">
-        <img :src="baseUrl+getItem.media.url" alt="">
+        <img :src="baseUrl+getItem.media.url" alt="" v-if='getItem.media.url'>
         <div class="productPage__price">{{getItem.price}}€</div>
       </div>
       <div class="productPage__infos">
         <div class="productPage__title">{{getItem.category.name}} / {{getItem.title}}</div>
         <div class="productPage__texte">{{getItem.content}}</div>
         <div class="productPage__user">
-          <div class="image">
-            <img :src="baseUrl+getItem.user.media.url" alt="">
-          </div>
+
           <div class="name">
             En vente par {{getItem.user.firstName}} {{getItem.user.lastName}}
             le {{formattedDate}}
           </div>
-          <div class="info">
+          <div class="info" v-if='getItem.user.city'>
+            Lieu : {{getItem.user.city}} / {{getItem.user.department}}
+          </div>
+          <div class="info" v-if='getItem.user.email'>
             Email : {{getItem.user.email}}
           </div>
-          <div class="info">
+          <div class="info" v-if='getItem.user.phone'>
             Téléphone : {{getItem.user.phone}}
           </div>
         </div>
