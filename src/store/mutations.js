@@ -2,6 +2,16 @@ import * as fromTypes from './types.js';
 
 export const mutations = {
 
+	[fromTypes.GET_ERRORS](state, payload) {
+		if (payload.login)
+			state.errors.login = payload.login;
+		if (payload.server)
+			state.errors.server = payload.server;
+		if (payload.register)
+			state.errors.register = payload.register;
+
+	},
+
 	[fromTypes.SEARCH](state, payload) {
 		state.search = {
 			...state.search,

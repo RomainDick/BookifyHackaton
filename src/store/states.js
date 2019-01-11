@@ -42,6 +42,11 @@ export const states = {
     results : {},
     loading : false,
     loaded : false
-  }
+  },
 
+  errors : {
+    login : false,
+    register : false,
+    server : false,
+  },
 };

@@ -5,7 +5,15 @@ import router         from '../core/router';
 
 export const actions = {
 
-	[fromTypes.CREATE_USER](payload){
+	[fromTypes.CREATE_USER]({commit}, payload){
+		commit(
+			fromTypes.GET_ERRORS,
+			{
+				server: false,
+				register: false,
+			}
+		);
+
 		Vue.http
 		.post(
 			Vue.config.environments.baseURL+'users',
@@ -13,13 +21,35 @@ export const actions = {
 		)
 		.then(() => {
 			//redirect user
-			router.push({ path: '/login' })
+			router.push({ path: '/login' });
 		}, response => {
-			console.log(response)
+			console.log(response.status);
+			if (response.status == 400){
+				commit(
+					fromTypes.GET_ERRORS,
+					{
+						register: true
+					}
+				);
+			} else {
+				commit(
+					fromTypes.GET_ERRORS,
+					{
+						server: true
+					}
+				);
+			}
 		});
 	},
 
 	[fromTypes.CREATE_MEDIA]({commit,dispatch}, payload){
+		commit(
+			fromTypes.GET_ERRORS,
+			{
+				server: false,
+			}
+		);
+
 		Vue.http
 		.post(
 			Vue.config.environments.baseURL+'media',
@@ -55,6 +85,12 @@ export const actions = {
 			}
 		}, response => {
 			console.log(response)
+			commit(
+				fromTypes.GET_ERRORS,
+				{
+					server: true
+				}
+			);
 		});
 	},
 
@@ -92,6 +128,13 @@ export const actions = {
 	},
 
 	[fromTypes.CREATE_PRODUCT]({commit}, payload){
+		commit(
+			fromTypes.GET_ERRORS,
+			{
+				server: false,
+			}
+		);
+
 		Vue.http
 		.post(
 			Vue.config.environments.baseURL+'items',
@@ -108,10 +151,24 @@ export const actions = {
 			router.push({ path: '/items' })
 		}, response => {
 			console.log(response)
+			commit(
+				fromTypes.GET_ERRORS,
+				{
+					server: false,
+				}
+			);
 		});
 	},
 
 	[fromTypes.LOGIN_USER]({commit, dispatch}, payload){
+		commit(
+			fromTypes.GET_ERRORS,
+			{
+				server: false,
+				login: false,
+			}
+		);
+
 		Vue.http
 		.post(
 			Vue.config.environments.baseURL+'login',
@@ -136,6 +193,21 @@ export const actions = {
 				user
 			);
 		}, response => {
+			if (response.status == 401){
+				commit(
+					fromTypes.GET_ERRORS,
+					{
+						login: true
+					}
+				);
+			} else {
+				commit(
+					fromTypes.GET_ERRORS,
+					{
+						server: true
+					}
+				);
+			}
 			console.log(response)
 		});
 	},

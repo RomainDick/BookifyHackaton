@@ -1,5 +1,10 @@
 export const getters = {
 	
+
+	getErrors: state => {
+		return state.errors;
+	},
+
 	getItem: state => {
 		return state.item.results;
 	},
