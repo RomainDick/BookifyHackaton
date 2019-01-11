@@ -169,7 +169,6 @@ export default {
     },
 
     createMedia(){
-      console.log(this.mediaIsCreated)
     if(this.mediaIsCreated){
       this.$store.dispatch(
         fromTypes.CREATE_MEDIA,

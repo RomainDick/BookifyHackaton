@@ -23,7 +23,6 @@ export const actions = {
 			//redirect user
 			router.push({ path: '/login' });
 		}, response => {
-			console.log(response.status);
 			if (response.status == 400){
 				commit(
 					fromTypes.GET_ERRORS,
@@ -56,7 +55,6 @@ export const actions = {
 			payload.media
 		)
 		.then(response => {
-			console.log(response)
 			if (payload.user)
 				payload.user.media = "/media/" + response.body.id
 			if (payload.item)
@@ -234,7 +232,7 @@ export const actions = {
 		let endpoint = 'items?';
 
 		console.log(payload)
-		
+
 		if(payload.department && payload.department != '00'){
 			endpoint += 'user.department='+payload.department+'&'
 		}
@@ -242,16 +240,6 @@ export const actions = {
 		if(payload.category && payload.category != 0){
 			endpoint += 'category.id[]='+payload.category+'&'
 		}
-
-		// if(payload.displayPref){
-		// 	for (let cat of payload.categories) {
-		// 		console.log(cat);
-		// 	}
-		// 	endpoint += ''+'&'
-		// }
-
-		// console.log(payload)
-		// console.log(endpoint)
 
 		commit(
 			fromTypes.GET_ITEMS_LOADING,

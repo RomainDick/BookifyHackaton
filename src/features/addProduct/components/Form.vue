@@ -117,7 +117,6 @@ export default {
     createProduct(){
       this.item.user = '/users/'+this.getUserInfos.id;
       this.item.category = '/categories/'+ this.item.category;
-      console.log(this.item);
       this.$store.dispatch(
         fromTypes.CREATE_PRODUCT,
         {
@@ -161,8 +160,6 @@ export default {
     createMedia(){
     this.item.user = '/users/'+this.getUserInfos.id;
     this.item.category = '/categories/'+ this.item.category;
-    console.log(this.item);
-    console.log(this.mediaIsCreated)
     if(this.mediaIsCreated){
       this.$store.dispatch(
         fromTypes.CREATE_MEDIA,
