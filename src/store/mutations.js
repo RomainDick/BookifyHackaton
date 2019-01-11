@@ -3,11 +3,11 @@ import * as fromTypes from './types.js';
 export const mutations = {
 
 	[fromTypes.GET_ERRORS](state, payload) {
-		if (payload.login)
+		if (payload.login != undefined)
 			state.errors.login = payload.login;
-		if (payload.server)
+		if (payload.server != undefined)
 			state.errors.server = payload.server;
-		if (payload.register)
+		if (payload.register != undefined)
 			state.errors.register = payload.register;
 
 	},
