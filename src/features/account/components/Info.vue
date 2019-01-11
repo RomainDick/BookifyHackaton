@@ -99,7 +99,6 @@ body {
     height: 100%;
     width: 100%;
 
- background-color:burlywood;
     .card {
 
       display: flex;
