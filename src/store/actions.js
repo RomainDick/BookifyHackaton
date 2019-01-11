@@ -142,7 +142,6 @@ export const actions = {
 			{headers:{'Authorization' : 'Bearer '+payload.token}}
 		)
 		.then(response => {
-			console.log(response);
 			commit(
 				fromTypes.CREATE_PRODUCT,
 				response.body
@@ -230,14 +229,29 @@ export const actions = {
 		});
 	},
 
-	[fromTypes.GET_ITEMS]({commit}, payload){
-		let endpoint = '';
 
-		if(payload && payload != '00'){
-			endpoint = 'items?user.department='+payload
-		} else {
-			endpoint = 'items'
+	[fromTypes.GET_ITEMS]({commit}, payload){
+		let endpoint = 'items?';
+
+		console.log(payload)
+		
+		if(payload.department && payload.department != '00'){
+			endpoint += 'user.department='+payload.department+'&'
 		}
+
+		if(payload.category && payload.category != 0){
+			endpoint += 'category.id[]='+payload.category+'&'
+		}
+
+		// if(payload.displayPref){
+		// 	for (let cat of payload.categories) {
+		// 		console.log(cat);
+		// 	}
+		// 	endpoint += ''+'&'
+		// }
+
+		// console.log(payload)
+		// console.log(endpoint)
 
 		commit(
 			fromTypes.GET_ITEMS_LOADING,
@@ -249,23 +263,67 @@ export const actions = {
 			Vue.config.environments.baseURL+endpoint
 		)
 		.then(response => {
-			console.log(response.body)
-				commit(
-					fromTypes.GET_ITEMS,
-					response.body
-				);
-				commit(
-					fromTypes.GET_ITEMS_LOADED,
-					true
-				);
-				commit(
-					fromTypes.GET_ITEMS_LOADING,
-					false
-				);
+			commit(
+				fromTypes.GET_ITEMS,
+				response.body
+			);
+			commit(
+				fromTypes.GET_ITEMS_LOADED,
+				true
+			);
+			commit(
+				fromTypes.GET_ITEMS_LOADING,
+				false
+			);
 		}, response => {
 			console.log(response);
 			commit(
 				fromTypes.GET_ITEMS_LOADING,
+				false
+			);
+		});
+	},
+
+
+	[fromTypes.GET_ITEMS_PREF]({commit}, payload){
+		let endpoint = 'items';
+
+		if(payload.department && payload.department != '00'){
+			endpoint += '?user.department='+payload.department+'&'
+		}
+
+		if(payload.categories){
+			for (let cat of payload.categories) {
+				endpoint += 'category.id[]='+cat.id+'&'
+			}
+		}
+
+		commit(
+			fromTypes.GET_ITEMS_PREF_LOADING,
+			true
+		);
+
+		Vue.http
+		.get(
+			Vue.config.environments.baseURL+endpoint
+		)
+		.then(response => {
+			commit(
+				fromTypes.GET_ITEMS_PREF,
+				response.body
+			);
+			commit(
+				fromTypes.GET_ITEMS_PREF_LOADED,
+				true
+			);
+			commit(
+				fromTypes.GET_ITEMS_PREF_LOADING,
+				false
+			);
+		}, response => {
+			console.log(response);
+			commit(
+				fromTypes.GET_ITEMS_PREF_LOADING,
 				false
 			);
 		});
@@ -316,20 +374,18 @@ export const actions = {
 			Vue.config.environments.baseURL+'items?user.id='+payload,
 		)
 		.then(response => {
-			setTimeout(() => {
-				commit(
-					fromTypes.GET_MY_ITEMS,
-					response.body
-				);
-				commit(
-					fromTypes.GET_MY_ITEMS_LOADED,
-					true
-				);
-				commit(
-					fromTypes.GET_MY_ITEMS_LOADING,
-					false
-				);
-			}, 500);
+			commit(
+				fromTypes.GET_MY_ITEMS,
+				response.body
+			);
+			commit(
+				fromTypes.GET_MY_ITEMS_LOADED,
+				true
+			);
+			commit(
+				fromTypes.GET_MY_ITEMS_LOADING,
+				false
+			);
 		}, response => {
 			console.log(response);
 			commit(
@@ -350,20 +406,18 @@ export const actions = {
 			Vue.config.environments.baseURL+'categories'
 		)
 		.then(response => {
-			setTimeout(() => {
-				commit(
-					fromTypes.GET_CATEGORIES,
-					response.body
-				);
-				commit(
-					fromTypes.GET_CATEGORIES_LOADED,
-					true
-				);
-				commit(
-					fromTypes.GET_CATEGORIES_LOADING,
-					false
-				);
-			}, 500);
+			commit(
+				fromTypes.GET_CATEGORIES,
+				response.body
+			);
+			commit(
+				fromTypes.GET_CATEGORIES_LOADED,
+				true
+			);
+			commit(
+				fromTypes.GET_CATEGORIES_LOADING,
+				false
+			);
 		}, response => {
 			console.log(response);
 			commit(

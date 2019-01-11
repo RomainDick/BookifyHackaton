@@ -75,6 +75,20 @@ export const mutations = {
 		state.item.loaded = payload;
 	},
 
+	
+	[fromTypes.GET_ITEMS_PREF](state, payload) {
+		state.itemspref = {
+			...state.itemspref,
+			results : payload,
+		};
+	},
+	[fromTypes.GET_ITEMS_PREF_LOADING](state, payload) {
+		state.itemspref.loading = payload;
+	},
+	[fromTypes.GET_ITEMS_PREF_LOADED](state, payload) {
+		state.itemspref.loaded = payload;
+	},
+
 
 	[fromTypes.GET_MY_ITEMS](state, payload) {
 		state.items = {

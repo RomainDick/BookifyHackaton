@@ -25,14 +25,14 @@
       </div>
     </div>
 
-    <!-- <div v-if='getUserLogin'>
+    <div v-if='getUserLogin'>
       <h1 class="home__title">Livres sélectionnés pour vous</h1>
       <ListItems
-        :loading = 'getItemsLoading'
-        :loaded  = 'getItemsLoaded'
-        :items   = "getItems['hydra:member']"
+        :loading = 'getItemsPrefLoading'
+        :loaded  = 'getItemsPrefLoaded'
+        :items   = "getItemsPref['hydra:member']"
       ></ListItems>
-    </div> -->
+    </div>
 
   </section>
 </template>
@@ -42,7 +42,7 @@ import Banner from '@/shared/Banner';
 import ListItems from '@/shared/ListItems';
 import Filters from '@/shared/Filters';
 
-// import * as fromTypes from '@/store/types.js';
+import * as fromTypes from '@/store/types.js';
 
 export default {
   name: 'home',
@@ -68,27 +68,40 @@ export default {
     },
     getFirstItems(){
       return this.getFirstItemsMethods()
-    }
+    },
+    getUserData() {
+			return this.$store.getters.getUserData;
+    },
+    getItemsPref() {
+			return this.$store.getters.getItemsPref;
+		},
+		getItemsPrefLoading() {
+			return this.$store.getters.getItemsPrefLoading;
+		},
+		getItemsPrefLoaded() {
+			return this.$store.getters.getItemsPrefLoaded;
+    },
   },
   
   mounted() {
+    this.$store.dispatch(
+      fromTypes.GET_ITEMS_PREF,
+      {
+        department : this.getUserData.department,
+        categories : this.getUserData.categories,
+      }
+    );
   },
 
   methods:{
     getFirstItemsMethods(){
       let array = []
+      
       if(this.getItems['hydra:member']){
-        if(this.getItems['hydra:member'][0]){
-          array.push(this.getItems['hydra:member'][0]);
-        }
-        if(this.getItems['hydra:member'][1]){
-          array.push(this.getItems['hydra:member'][1]);
-        }
-        if(this.getItems['hydra:member'][2]){
-          array.push(this.getItems['hydra:member'][2]);
-        }
-        if(this.getItems['hydra:member'][3]){
-          array.push(this.getItems['hydra:member'][3]);
+        for (let i = 0; i < 8; i++) {          
+          if(this.getItems['hydra:member'][i]){
+            array.push(this.getItems['hydra:member'][i]);
+          }
         }
       }
 

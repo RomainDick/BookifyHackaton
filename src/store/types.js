@@ -6,6 +6,10 @@ export const GET_ITEM                = '[PRODUCT PAGE] get item';
 export const GET_ITEM_LOADING        = '[PRODUCT PAGE LOADING] get item loading';
 export const GET_ITEM_LOADED         = '[PRODUCT PAGE LOADED] get item loaded';
 
+export const GET_ITEMS_PREF          = '[HOME PREF] get items pref';
+export const GET_ITEMS_PREF_LOADING  = '[HOME PREF LOADING] get items pref loading';
+export const GET_ITEMS_PREF_LOADED   = '[HOME PREF LOADED] get items pref loaded';
+
 export const GET_ITEMS               = '[HOME] get items';
 export const GET_ITEMS_LOADING       = '[HOME LOADING] get items loading';
 export const GET_ITEMS_LOADED        = '[HOME LOADED] get items loaded';

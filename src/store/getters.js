@@ -25,6 +25,16 @@ export const getters = {
 		return state.items.loaded;
 	},
 
+	getItemsPref: state => {
+		return state.itemspref.results;
+	},
+	getItemsPrefLoading: state => {
+		return state.itemspref.loading;
+	},
+	getItemsPrefLoaded: state => {
+		return state.itemspref.loaded;
+	},
+
 	getMyItems: state => {
 		return state.items.results;
 	},

@@ -1,7 +1,7 @@
 <template>
 
   <select class='SelectDepart' v-on:change='changeValue()' v-model='dept'>
-    <option value="00">Mon département</option>
+    <option value="00">Selectionner votre département</option>
     <option value="01">01 - Ain</option>
     <option value="02">02 - Aisne</option>
     <option value="03">03 - Allier</option>

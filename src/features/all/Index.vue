@@ -23,8 +23,6 @@ import Banner from '@/shared/Banner';
 import ListItems from '@/shared/ListItems';
 import Filters from '@/shared/Filters';
 
-// import * as fromTypes from '@/store/types.js';
-
 export default {
   name: 'login',
 
@@ -49,12 +47,10 @@ export default {
 		getItemsLoaded() {
 			return this.$store.getters.getItemsLoaded;
     },
+
 	},
   
   mounted() {
-		// this.$store.dispatch(
-			// fromTypes.GET_ITEMS
-		// );
   },
 
   methods:{

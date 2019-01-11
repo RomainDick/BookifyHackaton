@@ -31,6 +31,12 @@ export const states = {
     loading : false,
     loaded : false
   },
+  
+  itemspref : {
+    results : {},
+    loading : false,
+    loaded : false
+  },
 
   item : {
     results : {},
