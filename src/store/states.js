@@ -14,6 +14,7 @@ export const states = {
       birthday : null,
       email : null,
       department : "00",
+      categories : 0,
     }
   },
 
