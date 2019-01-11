@@ -6,13 +6,11 @@
     ></Banner>
 
     <div v-if='formDisplay == "login"'>
-      <Login></Login>
-      <button v-on:click='changeFormDisplay("register")'>Je n'ai pas de compte</button>
+      <Login v-on:changeFormDisplay="formDisplay = $event"></Login>
     </div>
 
     <div v-else>
-      <Register></Register>
-      <button v-on:click='changeFormDisplay("login")'>J'ai déja un compte</button>
+      <Register v-on:changeFormDisplay="formDisplay = $event"></Register>
     </div>
     
   </section>
@@ -58,5 +56,19 @@ export default {
 
 .login{
 
+}
+.button{
+  text-align: center;
+}
+button{
+    background: $moss-green;
+    border-radius: 0px;
+    border: none;
+    color: $black;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px 0 0 0;
+    padding: 10px 20px;
+    transition: all 150ms ease-out;
 }
 </style>

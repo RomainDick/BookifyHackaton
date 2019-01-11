@@ -85,11 +85,15 @@
       <label class="error" v-if="this.getErrors.server"><br/>Erreur serveur</label>
 
       <br/>
-      <input 
-        type="submit"
-        value='Créer mon compte'
-        v-on:click='checkForm()'
-      >
+      <div class="button">
+        <input 
+          type="submit"
+          value='Créer mon compte'
+          v-on:click='checkForm()'
+        >
+        {{ }}
+        <button v-on:click="$emit('changeFormDisplay','login')">J'ai déja un compte</button>
+      </div>
     </div>
     
   </section>
@@ -249,7 +253,21 @@ export default {
 
 }
 
+.button{
+  text-align: center;
+}
 .error{
     color: $red
+}
+button{
+    background: $moss-green;
+    border-radius: 0px;
+    border: none;
+    color: $black;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px 10px 0 0;
+    padding: 10px 20px;
+    transition: all 150ms ease-out;
 }
 </style>
