@@ -113,4 +113,9 @@ button{
     padding: 10px 20px;
     transition: all 150ms ease-out;
 }
+  
+button:hover{
+    background: $summer-green;
+    color:$white;
+  }
 </style>
