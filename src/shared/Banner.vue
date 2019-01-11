@@ -9,6 +9,7 @@
     <img v-if='image == "productPage"' src="../assets/background/productPage.jpg" alt="">
     <img v-if='image == "mesAnnonces"' src="../assets/background/mesAnnonces.jpg" alt="">
     <img v-if='image == "all"' src="../assets/background/all.jpg" alt="">
+    <img v-if='image == "account"' src="../assets/background/account.jpg" alt="">
     
     <h1 class="banner__title" v-html='title'>
     </h1>

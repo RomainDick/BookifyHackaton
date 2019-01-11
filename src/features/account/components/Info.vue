@@ -10,10 +10,13 @@
         {{ this.getUserData.firstName }}  {{ this.getUserData.lastName }}
       </div>
       <div class="email">
-        <i class="fas fa-fw fa-envelope"></i>{{ this.getUserData.email }}
+        <i>{{ this.getUserData.email }}</i>
       </div>
       <div class="phone">
-        <i class="fas fa-fw fa-phone"></i>{{ this.getUserData.phone }}
+        <i>{{ this.getUserData.phone }}</i>
+      </div>
+       <div class="categories">
+        <i v-for="categorie in this.getUserData.categories" v-bind:key="categorie">{{ categorie.name }}<br></i>
       </div>
     </div>
   </div>
@@ -100,9 +103,8 @@ body {
     height: 100%;
     width: 100%;
 
+ background-color:burlywood;
     .card {
-      width: 570px;
-      min-height: 185px;
 
       display: flex;
 
@@ -112,14 +114,14 @@ body {
       background: rgba(255, 255, 255, .8);
 
       .avatar {
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
         margin-right: $global_gap;
         border-radius: 50%;
       }
 
       .gender {
-        width: 25px;
+        width: 40px;
         height: 25px;
         margin-right: $global_gap;
         border-radius: 50%;
@@ -129,6 +131,7 @@ body {
         flex: 1 1 auto;
         display: flex;
         flex-direction: column;
+        text-align: center;
 
         div {
 
@@ -146,7 +149,7 @@ body {
           }
 
           i {
-            margin-right: $global_gap;
+               font-size: 110%;
           }
           image{
             width: 100px;
