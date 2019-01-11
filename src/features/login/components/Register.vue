@@ -74,6 +74,10 @@
         <label :for="cat.name">{{cat.name}}</label>
       </span>
       <label class="error" v-if="errors.categories"><br/><br/>{{ errors.categories }}</label>
+      <br/>
+
+      <label class="error" v-if="this.getErrors.register"><br/>Email déjà utilisé</label>
+      <label class="error" v-if="this.getErrors.server"><br/>Erreur serveur</label>
 
       <br/>
       <input 
@@ -132,6 +136,9 @@ export default {
   },
   
   computed: {
+    getErrors() {
+			return this.$store.getters.getErrors;
+    },
 		getMedia() {
 			return this.$store.getters.getMedia;
     },

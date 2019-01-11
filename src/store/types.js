@@ -1,5 +1,7 @@
 export const UPDATE_TEST             = '[TEST] update test bolean';
 
+export const GET_ERRORS               = '[ERROR] get errors';
+
 export const GET_ITEM                = '[PRODUCT PAGE] get item';
 export const GET_ITEM_LOADING        = '[PRODUCT PAGE LOADING] get item loading';
 export const GET_ITEM_LOADED         = '[PRODUCT PAGE LOADED] get item loaded';

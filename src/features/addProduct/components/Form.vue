@@ -47,6 +47,9 @@
         <label class="error" v-if="errors.media"><br/>{{ errors.media }}</label>
       </div>
       
+      <label class="error" v-if="this.getErrors.server"><br/>Erreur serveur</label>
+      <br/>
+      
       <div>
         <input type="submit" value="Envoyer" v-on:click='checkForm()'>
       </div>
@@ -89,6 +92,9 @@ export default {
   },
 
   computed : {
+    getErrors() {
+			return this.$store.getters.getErrors;
+    },
     getUserInfos() {
 			return this.$store.getters.getUserInfos;
     },

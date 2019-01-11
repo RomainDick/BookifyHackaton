@@ -16,6 +16,9 @@
         v-model='user.password'
       >
       <label class="error" v-if="errors.password"><br/>{{ errors.password }}</label>
+      <label class="error" v-if="this.getErrors.login"><br/>Email / Mot de passe incorrect</label>
+      <label class="error" v-if="this.getErrors.server"><br/>Erreur serveur</label>
+
       <br/>
       <input 
         type="submit"
@@ -48,14 +51,16 @@ export default {
   },
   
   computed: {
-
+    getErrors() {
+			return this.$store.getters.getErrors;
+    },
 	},
 
   methods:{
     loginUser(){
       this.$store.dispatch(
         fromTypes.LOGIN_USER,
-        this.user
+        this.user,
       );
     },
 
