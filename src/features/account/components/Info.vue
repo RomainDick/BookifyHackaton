@@ -55,7 +55,6 @@ import female from "@/assets/image/female.svg";
     methods: {
       setMedia(){
         this.picture = Vue.config.environments.baseURL + this.getUserData.media.url
-        console.log("setMedia " + this.picture )
       }
     },
 
