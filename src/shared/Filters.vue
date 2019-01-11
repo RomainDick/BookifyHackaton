@@ -57,7 +57,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import "../../../assets/stylesheets/variables";
+@import "../assets/stylesheets/variables";
 
 .filters{
   padding: $marge 0;

@@ -40,7 +40,7 @@
 <script>
 import Banner from '@/shared/Banner';
 import ListItems from '@/shared/ListItems';
-import Filters from './components/Filters';
+import Filters from '@/shared/Filters';
 
 // import * as fromTypes from '@/store/types.js';
 
