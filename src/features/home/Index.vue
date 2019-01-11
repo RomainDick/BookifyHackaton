@@ -11,6 +11,8 @@
     
     <div>
       <h1 class="home__title">Les dernières annonces</h1>
+
+      <!-- {{getItems['hydra:member']}} -->
       <ListItems
         :loading = 'getItemsLoading'
         :loaded  = 'getItemsLoaded'
@@ -23,15 +25,14 @@
       </div>
     </div>
 
-    <div v-if='getUserLogin'>
-      <!-- FAIRE LA REQUETTE AVEC LES PREF DE LUSER -->
+    <!-- <div v-if='getUserLogin'>
       <h1 class="home__title">Livres sélectionnés pour vous</h1>
       <ListItems
         :loading = 'getItemsLoading'
         :loaded  = 'getItemsLoaded'
         :items   = "getItems['hydra:member']"
       ></ListItems>
-    </div>
+    </div> -->
 
   </section>
 </template>
@@ -41,7 +42,7 @@ import Banner from '@/shared/Banner';
 import ListItems from '@/shared/ListItems';
 import Filters from './components/Filters';
 
-import * as fromTypes from '@/store/types.js';
+// import * as fromTypes from '@/store/types.js';
 
 export default {
   name: 'home',
@@ -71,21 +72,27 @@ export default {
   },
   
   mounted() {
-		this.$store.dispatch(
-			fromTypes.GET_ITEMS
-		);
   },
 
   methods:{
     getFirstItemsMethods(){
+      let array = []
       if(this.getItems['hydra:member']){
-        return [
-          this.getItems['hydra:member'][0],
-          this.getItems['hydra:member'][1],
-          this.getItems['hydra:member'][2],
-          this.getItems['hydra:member'][3]
-        ]
+        if(this.getItems['hydra:member'][0]){
+          array.push(this.getItems['hydra:member'][0]);
+        }
+        if(this.getItems['hydra:member'][1]){
+          array.push(this.getItems['hydra:member'][1]);
+        }
+        if(this.getItems['hydra:member'][2]){
+          array.push(this.getItems['hydra:member'][2]);
+        }
+        if(this.getItems['hydra:member'][3]){
+          array.push(this.getItems['hydra:member'][3]);
+        }
       }
+
+      return array;
     }
   }
   
