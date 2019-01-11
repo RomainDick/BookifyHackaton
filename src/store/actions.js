@@ -230,9 +230,7 @@ export const actions = {
 
 	[fromTypes.GET_ITEMS]({commit}, payload){
 		let endpoint = 'items?';
-
-		console.log(payload)
-
+		
 		if(payload.department && payload.department != '00'){
 			endpoint += 'user.department='+payload.department+'&'
 		}

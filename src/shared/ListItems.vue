@@ -1,9 +1,9 @@
 <template>
   <section class="listItem">
 
-		<div v-if  = 'items.length > 0'>
+		<div v-if='!loading && items'>
 			<ul 
-				v-if  = '!loading'
+				v-if  = 'items.length > 0'
 				name  = "list" 
 				tag   = "ul"
 				class = "listItem__list"
@@ -22,13 +22,12 @@
 					></ItemBook>
 				</li>
 			</ul>
-		<div v-else>
-			<Loader></Loader>
+		<div v-else class="listItem__none">
+			Aucun resultats
 		</div>
-
 	</div>
-	<div v-else class="listItem__none">
-		Aucun resultats
+	<div v-else>
+		<Loader></Loader>
 	</div>
 
   </section>
