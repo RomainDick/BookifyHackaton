@@ -1,14 +1,16 @@
 <template>
   <section class="filters">
+
     <SelectDepart
       v-bind:default="getUserData.department"
       v-on:new-dept="newDept"
     ></SelectDepart>
+
   </section>
 </template>
 
 <script>
-// import * as fromTypes from '@/store/types.js';
+import * as fromTypes from '@/store/types.js';
 import SelectDepart from '@/shared/SelectDepart';
 
 export default {
@@ -30,11 +32,23 @@ export default {
     getUserData() {
 			return this.$store.getters.getUserData;
     },
-	},
+  },
+  
+  mounted() {
+    this.getItems(this.getUserData.department);
+  },
 
   methods:{
     newDept(value){
-      console.log(value)
+      console.log(value);
+      this.getItems(value)
+    },
+
+    getItems(idDepartment){
+      this.$store.dispatch(
+        fromTypes.GET_ITEMS,
+        idDepartment
+      );
     }
   }
   

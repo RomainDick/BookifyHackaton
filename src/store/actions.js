@@ -158,7 +158,15 @@ export const actions = {
 		});
 	},
 
-	[fromTypes.GET_ITEMS]({commit}){
+	[fromTypes.GET_ITEMS]({commit}, payload){
+		let endpoint = '';
+
+		if(payload && payload != '00'){
+			endpoint = 'items?user.department='+payload
+		} else {
+			endpoint = 'items'
+		}
+
 		commit(
 			fromTypes.GET_ITEMS_LOADING,
 			true
@@ -166,9 +174,10 @@ export const actions = {
 
 		Vue.http
 		.get(
-			Vue.config.environments.baseURL+'items'
+			Vue.config.environments.baseURL+endpoint
 		)
 		.then(response => {
+			console.log(response.body)
 				commit(
 					fromTypes.GET_ITEMS,
 					response.body
