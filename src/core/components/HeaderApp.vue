@@ -25,7 +25,7 @@
           <router-link class='HeaderApp__link' to="/account">Mon compte</router-link>
         </li>
         <li v-if='getUserLogin'>
-          <button v-on:click="decoUser()">Déconnexion</button>
+          <button class='HeaderApp__link' v-on:click="decoUser()">Déconnexion</button>
         </li>
         
         <li>

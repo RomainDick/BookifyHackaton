@@ -134,6 +134,7 @@ export const mutations = {
 		state.user.infos.token = null
 		state.user.infos.id = null
 		state.user.data.department = "00"
+		state.user.data.categories = 0
 
 	},
 	
