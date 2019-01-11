@@ -6,48 +6,61 @@
       v-on:new-dept="newDept"
     ></SelectDepart>
 
+    <SelectCategories
+      v-on:new-cat="newCat"
+    ></SelectCategories>
+
   </section>
 </template>
 
 <script>
 import * as fromTypes from '@/store/types.js';
 import SelectDepart from '@/shared/SelectDepart';
+import SelectCategories from '@/shared/SelectCategories';
 
 export default {
   name: 'Filters',
 
   components: {
-    SelectDepart
+    SelectDepart,
+    SelectCategories
   },
 
 	data(){
     return {
+      payload : {
+        department : '00',
+        category : 0
+      }
     };
   },
   
   computed: {
-		getUserInfos() {
-			return this.$store.getters.getUserInfos;
-    },
     getUserData() {
 			return this.$store.getters.getUserData;
     },
   },
   
   mounted() {
-    this.getItems(this.getUserData.department);
+    this.payload.department = this.getUserData.department
+    this.getItems(this.payload);
   },
 
   methods:{
     newDept(value){
-      console.log(value);
-      this.getItems(value)
+      this.payload.department = value;
+      this.getItems(this.payload);
     },
 
-    getItems(idDepartment){
+    newCat(value){
+      this.payload.category = value;
+      this.getItems(this.payload);
+    },
+
+    getItems(payload){
       this.$store.dispatch(
         fromTypes.GET_ITEMS,
-        idDepartment
+        payload
       );
     }
   }
@@ -61,5 +74,7 @@ export default {
 
 .filters{
   padding: $marge 0;
+  display: flex;
+  justify-content: space-between;
 }
 </style>

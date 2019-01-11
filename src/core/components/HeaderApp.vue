@@ -15,7 +15,6 @@
         <li v-if='!getUserLogin'>
           <router-link class='HeaderApp__link' to="/login">Se connecter / S'inscrire</router-link>
         </li>
-
         <li v-if='getUserLogin'>
           <router-link class='HeaderApp__link' to="/items">Mes annonces</router-link>
         </li>
@@ -24,6 +23,9 @@
         </li>
         <li v-if='getUserLogin'>
           <router-link class='HeaderApp__link' to="/account">Mon compte</router-link>
+        </li>
+        <li v-if='getUserLogin'>
+          <button class='HeaderApp__link' v-on:click="decoUser()">Déconnexion</button>
         </li>
         
         <li>
@@ -39,20 +41,29 @@
 </template>
 
 <script>
+import * as fromTypes from '@/store/types.js';
 
 export default {
+  
   name: 'HeaderApp',
 
 	computed: {
 		getUserLogin() {
 			return this.$store.getters.getUserLogin;
-		},
+    },
 	},
 
 	mounted() {
 	},
 
 	methods:{
+    decoUser() {
+      this.$store.dispatch(
+          fromTypes.DECO_USER,
+          this.user,
+      );
+      this.$router.push('login') 
+    },
 	}
 }
 </script>

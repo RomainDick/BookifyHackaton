@@ -1,30 +1,34 @@
 <template>
   <section class="listItem">
 
-		<ul 
-			v-if  = '!loading'
-			name  = "list" 
-			tag   = "ul"
-			class = "listItem__list"
-		>
-			<li 
-				class = "listItem__item"
-				v-for = "(item, index) in items" 
-				:key  = 'index + 1'
+		<div v-if='!loading && items'>
+			<ul 
+				v-if  = 'items.length > 0'
+				name  = "list" 
+				tag   = "ul"
+				class = "listItem__list"
 			>
-				<ItemBook
-					:id          = 'item["@id"]'
-					:name        = 'item.title'
-					:description = 'item.content'
-					:image       = '"http://62.210.144.173:81/"+item.media.url'
-					:price       = 'item.price'
-				></ItemBook>
-			</li>
-		</ul>
-
-		<div v-else>
-			<Loader></Loader>
+				<li 
+					class = "listItem__item"
+					v-for = "(item, index) in items" 
+					:key  = 'index + 1'
+				>
+					<ItemBook
+						:id          = 'item["@id"]'
+						:name        = 'item.title'
+						:description = 'item.content'
+						:image       = '"http://62.210.144.173:81/"+item.media.url'
+						:price       = 'item.price'
+					></ItemBook>
+				</li>
+			</ul>
+		<div v-else class="listItem__none">
+			Aucun resultats
 		</div>
+	</div>
+	<div v-else>
+		<Loader></Loader>
+	</div>
 
   </section>
 </template>
@@ -80,6 +84,15 @@ export default {
 	&__item{
 		flex-basis: 23%;
 		margin:$marge 1%;
+	}
+
+	&__none{
+		font-size: 30px;
+		font-weight: 600;
+		color:$black;
+		opacity: 0.2;
+		text-align: center;
+		padding:30px 0;
 	}
 }
 </style>

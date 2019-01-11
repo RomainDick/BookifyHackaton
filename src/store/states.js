@@ -13,6 +13,8 @@ export const states = {
       phone : null,
       birthday : null,
       email : null,
+      department : "00",
+      categories : 0,
     }
   },
 
@@ -27,6 +29,12 @@ export const states = {
   },
 
   items : {
+    results : {},
+    loading : false,
+    loaded : false
+  },
+  
+  itemspref : {
     results : {},
     loading : false,
     loaded : false

@@ -75,6 +75,20 @@ export const mutations = {
 		state.item.loaded = payload;
 	},
 
+	
+	[fromTypes.GET_ITEMS_PREF](state, payload) {
+		state.itemspref = {
+			...state.itemspref,
+			results : payload,
+		};
+	},
+	[fromTypes.GET_ITEMS_PREF_LOADING](state, payload) {
+		state.itemspref.loading = payload;
+	},
+	[fromTypes.GET_ITEMS_PREF_LOADED](state, payload) {
+		state.itemspref.loaded = payload;
+	},
+
 
 	[fromTypes.GET_MY_ITEMS](state, payload) {
 		state.items = {
@@ -113,6 +127,15 @@ export const mutations = {
 	
 	[fromTypes.CREATE_MEDIA](state, payload) {
 		state.media = payload
+	},
+
+	[fromTypes.DECO_USER](state) {
+		state.user.login=false
+		state.user.infos.token = null
+		state.user.infos.id = null
+		state.user.data.department = "00"
+		state.user.data.categories = 0
+
 	},
 	
 	// [fromTypes.UPDATE_LOADER](state, payload) {
