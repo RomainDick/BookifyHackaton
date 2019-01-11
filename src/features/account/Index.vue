@@ -1,6 +1,6 @@
 <template>
   <div class="account">
-        <Banner
+    <Banner
       :title='"Mon compte"'
       :image='"account"'
     ></Banner>

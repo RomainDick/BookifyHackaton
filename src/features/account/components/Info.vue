@@ -16,7 +16,13 @@
         <i>{{ this.getUserData.phone }}</i>
       </div>
        <div class="categories">
-        <i v-for="categorie in this.getUserData.categories" v-bind:key="categorie">{{ categorie.name }}<br></i>
+        <i 
+          v-for="(categorie, index) in this.getUserData.categories" 
+          v-bind:key="index"
+        >
+          {{ categorie.name }}
+          <br>
+        </i>
       </div>
     </div>
   </div>
@@ -25,8 +31,7 @@
 </template>
 
 <script>
-import Vue              from 'vue';
-// import * as fromTypes from '@/store/types.js';
+import Vue from 'vue';
 import male from "@/assets/image/male.svg";
 import female from "@/assets/image/female.svg";
 
@@ -50,6 +55,7 @@ import female from "@/assets/image/female.svg";
         console.log("setMedia " + this.picture )
       }
     },
+
     computed: {
       getUserInfos() {
         return this.$store.getters.getUserInfos;
