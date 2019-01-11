@@ -139,7 +139,11 @@ export default {
         this.errors.hasError = true;
       }
       if (!this.item.content) {
-        this.errors.content = "Veuillez donner le resumé de votre livre";
+        this.errors.content = "Veuillez donner le resumé de votre livre.";
+        this.errors.hasError = true;
+      }
+      if (this.item.content.length >= 255) {
+        this.errors.content = "Veuillez réduire la taille du resumé de votre livre (255 caractères max).";
         this.errors.hasError = true;
       }
       if (!this.item.price) {
