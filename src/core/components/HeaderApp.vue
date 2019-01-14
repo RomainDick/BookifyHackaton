@@ -107,7 +107,7 @@ export default {
     padding: 2px 3px;
     margin:3px 7px;
 
-    &:hover{
+    &:hover, &.router-link-active{
       border-bottom: 2px solid $summer-green;
     }
 
