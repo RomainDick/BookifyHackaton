@@ -30,7 +30,7 @@
       </div> -->
 
       <div>
-        <label class="label">Résume du livre</label>
+        <label class="label">Résumé du livre</label>
         <textarea name="content" id="content" v-model="item.content"></textarea>
         <label class="error" v-if="errors.content"><br/>{{ errors.content }}</label>
       </div>
@@ -50,7 +50,7 @@
       <label class="error" v-if="this.getErrors.server"><br/>Erreur serveur</label>
       <br/>
       
-      <div>
+      <div class="button">
         <input type="submit" value="Envoyer" v-on:click='checkForm()'>
       </div>
     </div>
@@ -134,7 +134,7 @@ export default {
         this.errors.hasError = true;
       }
       if (!this.item.category) {
-        this.errors.category = "Veuillez selectionner une categorie.";
+        this.errors.category = "Veuillez sélectionner une categorie.";
         this.errors.hasError = true;
       }
       if (!this.item.content) {
@@ -200,4 +200,8 @@ export default {
   .error{
     color: $red
   }
+  .button{
+  text-align: center;
+}
+
 </style>

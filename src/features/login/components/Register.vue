@@ -26,10 +26,10 @@
       >
       <label class="error" v-if="errors.lastName"><br/>{{ errors.lastName }}</label>
 
-      <label class="label">Prenom</label>
+      <label class="label">Prénom</label>
       <input 
         type="text"
-        placeholder='Prenom'
+        placeholder='Prénom'
         v-model='user.firstName'
       >
       <label class="error" v-if="errors.firstName"><br/>{{ errors.firstName }}</label>
@@ -213,7 +213,7 @@ export default {
         this.errors.hasError = true;
       }
       if (!this.user.firstName) {
-        this.errors.firstName = "Veuillez saisir votre prenom";
+        this.errors.firstName = "Veuillez saisir votre prénom";
         this.errors.hasError = true;
       }
       if (!this.user.phone) {
@@ -269,4 +269,8 @@ button{
     padding: 10px 20px;
     transition: all 150ms ease-out;
 }
+  button:hover{
+    background: $summer-green;
+    color:$white;
+  }
 </style>

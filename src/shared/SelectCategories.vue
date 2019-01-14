@@ -6,7 +6,7 @@
         <label :for="cat.name">{{cat.name}}</label>
       </span> -->
 
-    <option value="0">Selectionner une catégorie</option>
+    <option value="0">Sélectionner une catégorie</option>
     <option :value="cat.id" v-for='(cat, index) in getCategories["hydra:member"]' :key="index">
       {{cat.name}}
     </option>
