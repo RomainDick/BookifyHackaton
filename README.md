@@ -1,4 +1,4 @@
-# hakaton
+# hackaton
 
 ## Project setup
 ```
